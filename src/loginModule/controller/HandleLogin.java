@@ -2,55 +2,53 @@ package loginModule.controller;
 
 import java.io.*;
 
-import com.fasterxml.jackson.databind.ObjectMapper; // µ¼ÈËÍâ²¿°ü
+import com.fasterxml.jackson.databind.ObjectMapper; // å¯¼äººå¤–éƒ¨åŒ…
 
 import gameModule.model.GameModel;
 import loginModule.model.Login;
 
 /**
- * µÇÂ½´¦Àí£º
- * ²éÑ¯´æ´¢ÓÃ»§Êı¾İµÄÎÄ¼ş£¬¼ì²éÓÃ»§ÊÇ·ñÒÑ¾­×¢²á£»
- * Èç¹ûÓÃ»§ÒÑ×¢²á¼ì²éÃÜÂëÊÇ·ñÕıÈ·¡£
- * @author Administrator
- *
+ * ç™»é™†å¤„ç†ï¼š
+ * æŸ¥è¯¢å­˜å‚¨ç”¨æˆ·æ•°æ®çš„æ–‡ä»¶ï¼Œæ£€æŸ¥ç”¨æˆ·æ˜¯å¦å·²ç»æ³¨å†Œï¼›
+ * å¦‚æœç”¨æˆ·å·²æ³¨å†Œæ£€æŸ¥å¯†ç æ˜¯å¦æ­£ç¡®ã€‚
  */
 public class HandleLogin {
 
 	/**
-	 * µÇÂ½Ä£ĞÍ´¦Àí·½·¨£º
-	 * ¶ÔÓÚ²ÎÊı¡°µÇÂ½Ä£ĞÍ¡±£¬´ÓÎÄ¼şÖĞÁ¬Ğø¶ÁÈ¡ÓÃ»§jsonÊı¾İ²¢×ª»»ÎªGameModel¶ÔÏó£»ºË¶Ô¶ÁÈ¡ÓÃ»§ÓëµÇÂ½ÓÃ»§ÊÇ·ñÏàÍ¬
-	 * 	¡ª¡ª $ÈôÏàÍ¬£¬ºË¶ÔÃÜÂëÊÇ·ñÕıÈ·
-	 * 		¡ª¡ª ÈôÃÜÂëÕıÈ·£¬ÉèÖÃLoginSuccessÎªtrue; µ±Ç°ÓÃ»§¼´Îª´ËÓÃ»§£»
-	 * 		¡ª¡ª ÈôÃÜÂë´íÎó£¬ÉèÖÃLoginSuccessÎªfalse; ÉèÖÃµ±Ç°ÓÃ»§Îªnull¡£
-	 * 	¡ª¡ª $Èô¶ÁÈ¡µ½ÎÄ¼ş½áÎ²£¬ÈÔÈ»Î´²éÕÒºË¶Ô³É¹¦£¬ÉèÖÃLoginSuccessÎªfalse; ÉèÖÃµ±Ç°ÓÃ»§Îªnull¡£
-	 * @param login µÇÂ½Ä£ĞÍ
+	 * ç™»é™†æ¨¡å‹å¤„ç†æ–¹æ³•ï¼š
+	 * å¯¹äºå‚æ•° â€œç™»é™†æ¨¡å‹â€ï¼Œä»æ–‡ä»¶ä¸­è¿ç»­è¯»å–ç”¨æˆ· json æ•°æ®å¹¶è½¬æ¢ä¸º GameModel å¯¹è±¡ï¼›æ ¸å¯¹è¯»å–ç”¨æˆ·ä¸ç™»é™†ç”¨æˆ·æ˜¯å¦ç›¸åŒ
+	 * 	â€”â€” $ è‹¥ç›¸åŒï¼Œæ ¸å¯¹å¯†ç æ˜¯å¦æ­£ç¡®
+	 * 		â€”â€” è‹¥å¯†ç æ­£ç¡®ï¼Œè®¾ç½® LoginSuccess ä¸º true; å½“å‰ç”¨æˆ·å³ä¸ºæ­¤ç”¨æˆ·ï¼›
+	 * 		â€”â€” è‹¥å¯†ç é”™è¯¯ï¼Œè®¾ç½® LoginSuccess ä¸º false; è®¾ç½®å½“å‰ç”¨æˆ·ä¸º nullã€‚
+	 * 	â€”â€” $ è‹¥è¯»å–åˆ°æ–‡ä»¶ç»“å°¾ï¼Œä»ç„¶æœªæŸ¥æ‰¾æ ¸å¯¹æˆåŠŸï¼Œè®¾ç½® LoginSuccess ä¸º false; è®¾ç½®å½“å‰ç”¨æˆ·ä¸º nullã€‚
+	 * @param login ç™»é™†æ¨¡å‹
 	 * @see com.fasterxml.jackson.databind.ObjectMapper#readValue(byte[], Class)
 	 */
 	public static void queryVerify(Login login) {
 		try {
 			File file=new File("UserInfo.json");
-			Reader in=new FileReader(file); // µ×²ãÁ÷
-			BufferedReader userRead=new BufferedReader(in); // ÉÏ²ãÁ÷
+			Reader in=new FileReader(file); // åº•å±‚æµ
+			BufferedReader userRead=new BufferedReader(in); // ä¸Šå±‚æµ
 			String json=null;
 			GameModel nowUser=null;
 			ObjectMapper mapper = new ObjectMapper();
-			while((json=userRead.readLine()) != null) { // ²»¶Ï¶ÁÈ¡ÓÃ»§Êı¾İ
-				nowUser=mapper.readValue(json, GameModel.class); // ¶ÁÈ¡µ½µÄÓÃ»§×÷Îªµ±Ç°ÓÃ»§
+			while((json=userRead.readLine()) != null) { // ä¸æ–­è¯»å–ç”¨æˆ·æ•°æ®
+				nowUser=mapper.readValue(json, GameModel.class); // è¯»å–åˆ°çš„ç”¨æˆ·ä½œä¸ºå½“å‰ç”¨æˆ·
 				if(nowUser.getUsername().equals(login.getUsername())) {
-					if(nowUser.getPasswrod().equals(login.getPasswrod())) { 
-						// ÕÒµ½ÓÃ»§Ãû£¬ÇÒÃÜÂëÕıÈ·£¬µÇÂ½³É¹¦
-						login.setLoginSuccess(true); 
+					if(nowUser.getPasswrod().equals(login.getPasswrod())) {
+						// æ‰¾åˆ°ç”¨æˆ·åï¼Œä¸”å¯†ç æ­£ç¡®ï¼Œç™»é™†æˆåŠŸ
+						login.setLoginSuccess(true);
 						login.setNowUser(nowUser);
 						break;
 					}
 					else {
-						login.setLoginSuccess(false); // ÃÜÂë´íÎó£¬µÇÂ½Ê§°Ü
+						login.setLoginSuccess(false); // å¯†ç é”™è¯¯ï¼Œç™»é™†å¤±è´¥
 						login.setNowUser(null);
 					}
 				}
 			}
-			userRead.close(); //¹Ø±ÕÉÏ²ãÁ÷
-			if(login.getLoginSuccess() != true) { // ²»´æÔÚ¸ÃÓÃ»§£¬µÇÂ½Ê§°Ü
+			userRead.close(); // å…³é—­ä¸Šå±‚æµ
+			if(login.getLoginSuccess() != true) { // ä¸å­˜åœ¨è¯¥ç”¨æˆ·ï¼Œç™»é™†å¤±è´¥
 				login.setNowUser(null);
 			}
 		}
@@ -58,5 +56,5 @@ public class HandleLogin {
 			e.printStackTrace();
 		}
 	}
-	
+
 }

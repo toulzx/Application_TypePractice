@@ -3,16 +3,14 @@ package loginModule.view;
 import javax.swing.*;
 import java.awt.*;
 /**
- * Õâ¸öÀàÓÃÀ´ÉèÖÃ±³¾°Í¼Æ¬
- * @author ¶ÎÖ¾³¬
- *
+ * è¿™ä¸ªç±»ç”¨æ¥è®¾ç½®èƒŒæ™¯å›¾ç‰‡
  */
 public class BackGroundPanel extends JPanel {
     /**
-	 * ĞòÁĞ°æ±¾
-	 */
-	private static final long serialVersionUID = 1L;
-	//ÉùÃ÷Í¼Æ¬
+     * åºåˆ—ç‰ˆæœ¬
+     */
+    private static final long serialVersionUID = 1L;
+    // å£°æ˜å›¾ç‰‡
     private Image backIcon;
     public BackGroundPanel(Image backIcon){
         this.backIcon = backIcon;
@@ -21,7 +19,7 @@ public class BackGroundPanel extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        //»æÖÆ±³¾°
+        // ç»˜åˆ¶èƒŒæ™¯
         g.drawImage(backIcon,0,0,this.getWidth(),this.getHeight(),null);
 
     }

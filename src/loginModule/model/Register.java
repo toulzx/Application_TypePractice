@@ -3,38 +3,36 @@ package loginModule.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * ×¢²áÄ£ĞÍ
- * @author ¶ÎÖ¾³¬
- *
+ * æ³¨å†Œæ¨¡å‹
  */
 public class Register {
 
-	// ÉèÖÃÊôĞÔÄ¬ÈÏÖµ
-	protected String nickname=null; // êÇ³Æ
-	protected String username=null, passwrod=null;// ÓÃ»§Ãû¡¢ÃÜÂëºÍĞÔ±ğ
-	protected String sex=null;// ĞÔ±ğ
-	protected int passNum=0;// Í¨¹ı¹Ø¿¨Êı
-	protected long totalType=0;// ´ò×Ö×Ü¸öÊı
-	protected long totalRight=0;// ÕıÈ·¸öÊı
-	protected long newType =0;// ĞÂÔö´ò×Ö×Ü¸öÊı
-	protected long newRight =0;// ĞÂÔöÕıÈ·¸öÊı
+	// è®¾ç½®å±æ€§é»˜è®¤å€¼
+	protected String nickname=null; // æ˜µç§°
+	protected String username=null, passwrod=null;// ç”¨æˆ·åã€å¯†ç å’Œæ€§åˆ«
+	protected String sex=null;// æ€§åˆ«
+	protected int passNum=0;// é€šè¿‡å…³å¡æ•°
+	protected long totalType=0;// æ‰“å­—æ€»ä¸ªæ•°
+	protected long totalRight=0;// æ­£ç¡®ä¸ªæ•°
+	protected long newType =0;// æ–°å¢æ‰“å­—æ€»ä¸ªæ•°
+	protected long newRight =0;// æ–°å¢æ­£ç¡®ä¸ªæ•°
 
-	// ÅÅ³ıÊôĞÔ£¬´¦Àí×¢²áÄ£ĞÍÊ±£¬¸Ã³ÉÔ±±äÁ¿²»Ìí¼Óµ½json
+	// æ’é™¤å±æ€§ï¼Œå¤„ç†æ³¨å†Œæ¨¡å‹æ—¶ï¼Œè¯¥æˆå‘˜å˜é‡ä¸æ·»åŠ åˆ° json
 
 	@JsonIgnore
-	private boolean registerSuccess=false; // ×¢²áÊÇ·ñ³É¹¦
-	
+	private boolean registerSuccess=false; // æ³¨å†Œæ˜¯å¦æˆåŠŸ
+
 	/**
-	 * Ä¬ÈÏµÄ¹¹Ôì·½·¨£¬Ê²Ã´Ò²²»×ö£¬ËùÓĞÊôĞÔ¾ùÎªÄ¬ÈÏÖµ
+	 * é»˜è®¤çš„æ„é€ æ–¹æ³•ï¼Œä»€ä¹ˆä¹Ÿä¸åšï¼Œæ‰€æœ‰å±æ€§å‡ä¸ºé»˜è®¤å€¼
 	 */
 	public Register() {}
-	
+
 	/**
-	 * ÖØÔØµÄ¹¹Ôì·½·¨Ìá¹©²ÎÊıÉèÖÃÒÔÏÂÊôĞÔ£¬ÆäËûÊôĞÔÎªÄ¬ÈÏÖµ
-	 * @param nickname êÇ³Æ
-	 * @param username ÓÃ»§Ãû
-	 * @param passwrod ÃÜÂë
-	 * @param sex ĞÔ±ğ
+	 * é‡è½½çš„æ„é€ æ–¹æ³•æä¾›å‚æ•°è®¾ç½®ä»¥ä¸‹å±æ€§ï¼Œå…¶ä»–å±æ€§ä¸ºé»˜è®¤å€¼
+	 * @param nickname æ˜µç§°
+	 * @param username ç”¨æˆ·å
+	 * @param passwrod å¯†ç 
+	 * @param sex æ€§åˆ«
 	 */
 	public Register(String nickname, String username, String passwrod, String sex){
 		this.nickname=nickname;
@@ -42,8 +40,8 @@ public class Register {
 		this.passwrod=passwrod;
 		this.sex=sex;
 	}
-	
-	// ÉèÖÃÓò¸ü¸ÄÆ÷ºÍÓò·ÃÎÊÆ÷
+
+	// è®¾ç½®åŸŸæ›´æ”¹å™¨å’ŒåŸŸè®¿é—®å™¨
 
 	public void setNickname(String s) {
 		nickname=s;
@@ -51,49 +49,49 @@ public class Register {
 	public String getNickname() {
 		return nickname;
 	}
-	
+
 	public void setUsername(String s) {
 		username=s;
 	}
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public void setPasswrod(String s) {
 		passwrod=s;
 	}
 	public String getPasswrod() {
 		return passwrod;
 	}
-	
+
 	public void setSex(String s) {
 		sex=s;
 	}
 	public String getSex() {
 		return sex;
 	}
-	
+
 	public void setPassNum(int n) {
 		passNum=n;
 	}
 	public int getPassNum() {
 		return passNum;
 	}
-	
+
 	public void setTotalType(long n) {
 		totalType=n;
 	}
 	public long getTotalType() {
 		return totalType;
 	}
-	
+
 	public void setTotalRight(long n) {
 		totalRight=n;
 	}
 	public long getTotalRight() {
 		return totalRight;
 	}
-	
+
 	public void setRegisterSuccess(boolean b) {
 		registerSuccess=b;
 	}

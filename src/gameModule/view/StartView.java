@@ -15,7 +15,6 @@ import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
-import gameModule.controller.HandleChoice;
 import gameModule.controller.HandleDataList;
 import gameModule.model.GameModel;
 import loginModule.view.BackGroundPanel;
@@ -23,14 +22,14 @@ import loginModule.view.LoginView;
 import loginModule.utils.ScreenUtils;
 
 /**
- * ¿ªÊ¼ÊÓÍ¼£º
- * »æÖÆ¿ªÊ¼½çÃæ
+ * å¼€å§‹è§†å›¾ï¼š
+ * ç»˜åˆ¶å¼€å§‹ç•Œé¢
  *
  * @author lzx
  */
 public class StartView {
 	
-	JFrame jf = new JFrame("´ò×ÖÓÎÏ·");
+	JFrame jf = new JFrame("æ‰“å­—æ¸¸æˆ");
 	private GameModel user=null;
 	
 	final int WIDTH = 740;
@@ -40,39 +39,86 @@ public class StartView {
 		user=nowUser;
 	}
 
-	// ×é×°ÊÓÍ¼
+	// ç»„è£…è§†å›¾
 	public void init() throws Exception {
-		// ÉèÖÃ´°¿ÚÏà¹ØÊôĞÔ
+		// è®¾ç½®çª—å£ç›¸å…³å±æ€§
 		jf.setBounds((ScreenUtils.getScreenWidth() - WIDTH) / 2,
 				(ScreenUtils.getScreenHeight() - HEIGHT) / 2, WIDTH, HEIGHT);
-//		jf.setLayout(new FlowLayout());
 		jf.setResizable(true);
-		jf.setIconImage(ImageIO.read(new File("images\\logo.png"))); //ÉèÖÃlogo
+		jf.setIconImage(ImageIO.read(new File("src\\images\\logo.png"))); //è®¾ç½®logo
 		
-		// ÉèÖÃ´°¿ÚÄÚÈİ
-		// ±³¾°Í¼Æ¬
-		BackGroundPanel bgPanel = new BackGroundPanel(ImageIO.read(new File("images\\1.jpg")));
+		// è®¾ç½®çª—å£å†…å®¹
+		// èƒŒæ™¯å›¾ç‰‡
+		BackGroundPanel bgPanel = new BackGroundPanel(ImageIO.read(new File("src\\images\\1.jpg")));
 		bgPanel.setBounds(0,0,WIDTH,HEIGHT);
 		
 		
-		// Ñ¡Ôñ¹Ø¿¨
+		// é€‰æ‹©å…³å¡
 		Box cBox1 = Box.createHorizontalBox();
 		Box cBox2 = Box.createHorizontalBox();
-//		Dimension preferredSize=new Dimension(160,40);
-		String choiceStr []= {"µÚÒ»¹Ø", "µÚ¶ş¹Ø", "µÚÈı¹Ø", "×ÔÓÉÄ£Ê½"};
+		String choiceStr []= {" ç¬¬ä¸€å…³ ", " ç¬¬äºŒå…³ ", " ç¬¬ä¸‰å…³ ", " è‡ªç”±æ¨¡å¼ "};
 		JButton choiceBut []=new JButton[choiceStr.length];
-		HandleChoice handleChoice = new HandleChoice(user);
-		// ÉèÖÃ¿ÉÒÔÑ¡ÔñµÄ¹Ø¿¨
+		// è®¾ç½®å¯ä»¥é€‰æ‹©çš„å…³å¡
 		for(int i=0; i<choiceStr.length; i++) {
 			choiceBut[i]=new JButton(choiceStr[i]);
-			if(user.getPassNum()>=i) // Èç¹ûÉÏÒ»¹ØÒÑÍ¨¹ı£¬½«¸Ã¹ØÉèÖÃÎª¿ÉÒÔ½øÈë
+			if(user.getPassNum()>=i) // å¦‚æœä¸Šä¸€å…³å·²é€šè¿‡ï¼Œå°†è¯¥å…³è®¾ç½®ä¸ºå¯ä»¥è¿›å…¥
 			{
 				choiceBut[i].setEnabled(true);
 			} else {
 				choiceBut[i].setEnabled(false);
 			}
-			choiceBut[i].addActionListener(handleChoice);
-//			choiceBut[i].setPreferredSize(preferredSize);
+			choiceBut[i].addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent actionEvent) {
+					// è®¾ç½®ä¸åŒå…³å¡éš¾åº¦
+					switch(actionEvent.getActionCommand()) {
+						case" ç¬¬ä¸€å…³ " :
+							user.setDifficulty(5);
+							break;
+						case " ç¬¬äºŒå…³ " :
+							user.setDifficulty(10);
+							break;
+						case " ç¬¬ä¸‰å…³ " :
+							user.setDifficulty(15);
+							break;
+						case " è‡ªç”±æ¨¡å¼ " :
+							String difficultyCustom=JOptionPane.showInputDialog(null," è¯·è¾“å…¥ä½ æƒ³è¦çš„éš¾åº¦ (å¦‚ï¼š5,15,20)",
+									" éš¾åº¦è‡ªå®šä¹‰ ",JOptionPane.PLAIN_MESSAGE);
+							if(difficultyCustom != null) {
+								user.setDifficulty(Integer.parseInt(difficultyCustom));
+							}
+							break;
+					}
+					if (user.getModel() == 0) {
+						// è·³è½¬åˆ°å­—ç¬¦ç•Œé¢
+						try {
+							new GameView(user).init();
+							jf.dispose();
+						}
+						catch(Exception ex) {
+							ex.printStackTrace();
+						}
+					} else {
+						// è·³è½¬æ–‡æœ¬æ¯”è¾ƒç•Œé¢
+						try{
+							//åˆå§‹åŒ–ç•Œé¢
+							Windowm windowm = new Windowm(user);
+							//å±æ€§è®¾ç½®
+							SimpleAttributeSet attrset = new SimpleAttributeSet();
+							//å­—ä½“å¤§å°
+							StyleConstants.setFontSize(attrset,16);
+							//è·å–JTextPaneå¯¹è±¡
+							Document docs1=windowm.text1.getDocument();
+							//è®¾ç½®åˆæ¬¡æ˜¾ç¤ºæ–‡æœ¬
+							docs1.insertString(docs1.getLength(), "", attrset);
+							Document docs2=windowm.text2.getDocument();
+							docs2.insertString(docs2.getLength(), "æ‰‹åŠ¨è¾“å…¥è¾“å…¥æˆ–è€…é€‰æ‹©æ–‡é—´æ‰“å¼€\nç‚¹å‡»æ ¸å¯¹è¯•è¯•\nçº¢è‰²è¡¨ç¤ºé”™è¯¯å­—ç¬¦\nè“è‰²è¡¨ç¤ºå¤šä½™æˆ–ç¼ºå¤±å­—ç¬¦", attrset);
+						} catch (BadLocationException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			});
 		}
 		
 		cBox1.add(choiceBut[0]);
@@ -83,65 +129,36 @@ public class StartView {
 		cBox2.add(choiceBut[3]);
 		
 		
-		// ×Ö·ûÄ£Ê½
+		// æ¨¡å¼
 		Box sBox = Box.createHorizontalBox();
-		JButton startBut = new JButton("×Ö ·û Ä£ Ê½");
-		startBut.setBackground(Color.red);
-//		preferredSize=new Dimension(150,70);
-//		startBut.setPreferredSize(preferredSize);
-		startBut.addActionListener(new ActionListener() { // Îª¡°¿ªÊ¼ÓÎÏ·¡±°´Å¥×¢²á¼àÊÓÆ÷
+		JButton startBut = new JButton("ç‚¹æ­¤é€‰æ‹©æ¸¸æˆæ¨¡å¼");
+		startBut.setBackground(Color.white);
+
+		startBut.addActionListener(new ActionListener() { // ä¸ºâ€œå¼€å§‹æ¸¸æˆâ€æŒ‰é’®æ³¨å†Œç›‘è§†å™¨
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Ìø×ªµ½ÓÎÏ·½çÃæ
-				try {
-//					new CharJFrame(user.getDifficulty());
-					new GameView(user).init();
-					jf.dispose();
-				}
-				catch(Exception ex) {
-					ex.printStackTrace();
+				if (user.getModel() == 0) {
+					startBut.setText("é€‰æ‹©äº†æ–‡æœ¬æ¨¡å¼");
+					startBut.setBackground(Color.green);
+					user.setModel(1);
+				} else {
+					startBut.setText("é€‰æ‹©äº†å­—ç¬¦æ¨¡å¼");
+					startBut.setBackground(Color.red);
+					user.setModel(0);
 				}
 			}
 		});
 		sBox.add(startBut);
-
-		// ÎÄ±¾Ä£Ê½
-		Box aBox = Box.createHorizontalBox();
-		JButton articleCompareBut = new JButton("ÎÄ ±¾ Ä£ Ê½");
-		articleCompareBut.setBackground(Color.green);
-		articleCompareBut.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent actionEvent) {
-				// Ìø×ªÎÄ±¾±È½Ï½çÃæ
-				try{
-					//³õÊ¼»¯½çÃæ
-					Windowm windowm = new Windowm(user);
-					//ÊôĞÔÉèÖÃ
-					SimpleAttributeSet attrset = new SimpleAttributeSet();
-					//×ÖÌå´óĞ¡
-					StyleConstants.setFontSize(attrset,16);
-					//»ñÈ¡JTextPane¶ÔÏó
-					Document docs1=windowm.text1.getDocument();
-					//ÉèÖÃ³õ´ÎÏÔÊ¾ÎÄ±¾
-					docs1.insertString(docs1.getLength(), "", attrset);
-					Document docs2=windowm.text2.getDocument();
-					docs2.insertString(docs2.getLength(), "ÊÖ¶¯ÊäÈëÊäÈë»òÕßÑ¡ÔñÎÄ¼ä´ò¿ª\nµã»÷ºË¶ÔÊÔÊÔ\nºìÉ«±íÊ¾´íÎó×Ö·û\nÀ¶É«±íÊ¾¶àÓà»òÈ±Ê§×Ö·û", attrset);
-				} catch (BadLocationException e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		aBox.add(articleCompareBut);
 		
-		// ÅÅĞĞ°ñ
+		// æ’è¡Œæ¦œ
 		Box kBox=Box.createHorizontalBox();
-		JButton rankListBut = new JButton("ÅÅ  ĞĞ  °ñ");
-		rankListBut.addActionListener(new ActionListener() { // ÎªÅÅĞĞ°ñ°´Å¥×¢²á¼àÊÓÆ÷
+		JButton rankListBut = new JButton("æ’  è¡Œ  æ¦œ");
+		rankListBut.addActionListener(new ActionListener() { // ä¸ºæ’è¡Œæ¦œæŒ‰é’®æ³¨å†Œç›‘è§†å™¨
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				List<GameModel> rankList = HandleDataList.getUserList(); // »ñÈ¡ËùÓĞÓÃ»§ÅÅĞòºóµÄÁĞ±í
+				List<GameModel> rankList = HandleDataList.getUserList(); // è·å–æ‰€æœ‰ç”¨æˆ·æ’åºåçš„åˆ—è¡¨
 				try {
-					 // ÏÔÊ¾ÅÅĞĞ°ñÊÓÍ¼
+					 // æ˜¾ç¤ºæ’è¡Œæ¦œè§†å›¾
 					new RankListView(rankList, user).init();
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -150,16 +167,16 @@ public class StartView {
 		});
 		kBox.add(rankListBut);
 		
-		// ÍË³öµÇÂ½
+		// é€€å‡ºç™»é™†
 		Box rBox=Box.createHorizontalBox();
-		JButton reLoginBut = new JButton("ÍË³öµÇÂ½");
+		JButton reLoginBut = new JButton("é€€å‡ºç™»é™†");
 		reLoginBut.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
-					HandleDataList.saveCurrentUserData(user); // ½áÊøÓÎÏ·Ç°ÏÈ±£´æÓÃ»§Êı¾İ
+					HandleDataList.saveCurrentUserData(user); // ç»“æŸæ¸¸æˆå‰å…ˆä¿å­˜ç”¨æˆ·æ•°æ®
 					
-					new LoginView().init(); // µÇÂ½½çÃæ
+					new LoginView().init(); // ç™»é™†ç•Œé¢
 					jf.dispose();
 				} catch (Exception e2) {
 					e2.printStackTrace();
@@ -168,27 +185,25 @@ public class StartView {
 		});
 		rBox.add(reLoginBut);
 		
-		// ÍË³öÓÎÏ·
+		// é€€å‡ºæ¸¸æˆ
 		Box eBox=Box.createHorizontalBox();
-		JButton exitBut = new JButton("ÍË³öÓÎÏ·");
+		JButton exitBut = new JButton("é€€å‡ºæ¸¸æˆ");
 		exitBut.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				HandleDataList.saveCurrentUserData(user); // ½áÊøÓÎÏ·Ç°ÏÈ±£´æÓÃ»§Êı¾İ
-				System.exit(0); // ÍË³ö
+				HandleDataList.saveCurrentUserData(user); // ç»“æŸæ¸¸æˆå‰å…ˆä¿å­˜ç”¨æˆ·æ•°æ®
+				System.exit(0); // é€€å‡º
 			}
 		});
 		eBox.add(exitBut);
 
 		Box tBox = Box.createHorizontalBox();
 		tBox.add(sBox);
-		tBox.add(Box.createHorizontalStrut(10));
-		tBox.add(aBox);
 		
 		
-		// »¶Ó­Óï
-		JLabel label = new JLabel(user.getNickname()+"ÄãºÃ,»¶Ó­Äú£¡");
-		label.setFont(new Font("¿¬Ìå", Font.BOLD, 40));
+		// æ¬¢è¿è¯­
+		JLabel label = new JLabel(user.getNickname()+"ä½ å¥½,æ¬¢è¿æ‚¨ï¼");
+		label.setFont(new Font("æ¥·ä½“", Font.BOLD, 40));
 		
 		Box box=Box.createVerticalBox();
 		box.add(Box.createVerticalStrut(120));

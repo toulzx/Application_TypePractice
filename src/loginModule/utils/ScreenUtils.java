@@ -2,22 +2,21 @@ package loginModule.utils;
 
 import java.awt.*;
 /**
- * Õâ¸öÀàÓÃÀ´»ñÈ¡µ±Ç°µçÄÔµÄÒ»Ğ©ĞÅÏ¢
- *
+ * è¿™ä¸ªç±»ç”¨æ¥è·å–å½“å‰ç”µè„‘çš„ä¸€äº›ä¿¡æ¯
  */
 public class ScreenUtils {
 
     /**
-     * »ñÈ¡µ±Ç°µçÄÔÆÁÄ»µÄ¿í¶È
-     * @return ÆÁÄ»¿í¶È
+     * è·å–å½“å‰ç”µè„‘å±å¹•çš„å®½åº¦
+     * @return å±å¹•å®½åº¦
      */
     public static int getScreenWidth(){
         return Toolkit.getDefaultToolkit().getScreenSize().width;
     }
 
     /**
-     * »ñÈ¡µ±Ç°µçÄÔÆÁÄ»µÄ¸ß¶È
-     * @return ÆÁÄ»¸ß¶È
+     * è·å–å½“å‰ç”µè„‘å±å¹•çš„é«˜åº¦
+     * @return å±å¹•é«˜åº¦
      */
     public static int getScreenHeight(){
         return Toolkit.getDefaultToolkit().getScreenSize().height;

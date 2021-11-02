@@ -8,20 +8,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import gameModule.model.GameModel;
 
 
+
 /**
- * ÅÅĞĞ°ñ´¦Àí£º
- * ´ÓÓÃ»§Êı¾İÎÄ¼şÖĞ¶ÁÈ¡ËùÓĞÓÃ»§Êı¾İ£¬²¢°´Ä³Ò»ÊôĞÔ½øĞĞÅÅÃû
+ * æ’è¡Œæ¦œå¤„ç†ï¼š
+ * ä»ç”¨æˆ·æ•°æ®æ–‡ä»¶ä¸­è¯»å–æ‰€æœ‰ç”¨æˆ·æ•°æ®ï¼Œå¹¶æŒ‰æŸä¸€å±æ€§è¿›è¡Œæ’å
  */
 public class HandleDataList {
 
 	public static final String USERNAME_ROOT = "root";
 	private static final int LEVEL_FREE_NUM = 999;
 
-	private static List<GameModel> mUserList = new ArrayList<GameModel>(); // ÓÃ»§ÁĞ±í
+	private static List<GameModel> mUserList = new ArrayList<GameModel>(); // ç”¨æˆ·åˆ—è¡¨
 
 
 	/**
-	 * ¶ÁÈ¡ Json ÎÄ¼şÖĞµÄÊı¾İ
+	 * è¯»å– Json æ–‡ä»¶ä¸­çš„æ•°æ®
 	 * @return java.util.List<gameModule.model.GameModel>
 	 * @date 2021/10/28 14:34
 	 */
@@ -29,20 +30,20 @@ public class HandleDataList {
 
 		try {
 			File file = new File("UserInfo.json");
-			Reader in = new FileReader(file); // µ×²ãÁ÷
-			BufferedReader userRead = new BufferedReader(in); // ÉÏ²ãÁ÷
+			Reader in = new FileReader(file); // åº•å±‚æµ
+			BufferedReader userRead = new BufferedReader(in); // ä¸Šå±‚æµ
 			String json = null;
 			GameModel readUser = null;
 			ObjectMapper mapper = new ObjectMapper();
-			while ((json = userRead.readLine()) != null) { // ²»¶Ï¶ÁÈ¡ÓÃ»§Êı¾İ
-				readUser = mapper.readValue(json, GameModel.class); // ¶ÁÈ¡µ½µÄÓÃ»§
+			while ((json = userRead.readLine()) != null) { // ä¸æ–­è¯»å–ç”¨æˆ·æ•°æ®
+				readUser = mapper.readValue(json, GameModel.class); // è¯»å–åˆ°çš„ç”¨æˆ·
 				if (readUser.getTotalRight() != 0) {
 					readUser.setNewAccuracy((double) readUser.getNewRight() / readUser.getNewType());
 					readUser.setAccuracy((double) readUser.getTotalRight() / readUser.getTotalType());
 				}
-				mUserList.add(readUser); // ½«¶ÁÈ¡µ½µÄÓÃ»§Ìí¼Óµ½ÓÃ»§ÁĞ±í
+				mUserList.add(readUser); // å°†è¯»å–åˆ°çš„ç”¨æˆ·æ·»åŠ åˆ°ç”¨æˆ·åˆ—è¡¨
 			}
-			userRead.close(); // ¹Ø±ÕÉÏ²ãÁ÷
+			userRead.close(); // å…³é—­ä¸Šå±‚æµ
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -52,14 +53,13 @@ public class HandleDataList {
 	}
 
 	/**
-	 * ¸üĞÂ Json ÎÄ¼şÖĞµÄÊı¾İ
-	 * ÔÚÍË³öµÇÂ½»òÍË³öÓÎÏ·Ç°½«¸ÃÓÃ»§µÄËùÓĞÊı¾İ´æÈëÓÃ»§ÎÄ¼ş
+	 * æ›´æ–° Json æ–‡ä»¶ä¸­çš„æ•°æ®
+	 * åœ¨é€€å‡ºç™»é™†æˆ–é€€å‡ºæ¸¸æˆå‰å°†è¯¥ç”¨æˆ·çš„æ‰€æœ‰æ•°æ®å­˜å…¥ç”¨æˆ·æ–‡ä»¶
 	 * @param currentUser:
 	 * @date 2021/10/28 15:15
 	 */
 	public static void saveCurrentUserData(GameModel currentUser) {
 
-		//
 		if (currentUser.getRightCount() != 0){
 			currentUser.setNewRight(currentUser.getRightCount());
 			currentUser.setNewType(currentUser.getTypeCount());
@@ -68,22 +68,21 @@ public class HandleDataList {
 		currentUser.setTotalRight(currentUser.getTotalRight()+currentUser.getRightCount());
 		currentUser.setTotalType(currentUser.getTotalType()+currentUser.getTypeCount());
 		currentUser.setAccuracy((double)currentUser.getTotalRight()/currentUser.getTotalType());
-		// ´´½¨ Jackson µÄºËĞÄ¶ÔÏó ObjectMapper
 		ObjectMapper mapper=new ObjectMapper();
-		List<String> users = new ArrayList<String>(); // ËùÓĞÓÃ»§
+		List<String> users = new ArrayList<String>(); // æ‰€æœ‰ç”¨æˆ·
 
 		try {
-			String nowJson=mapper.writeValueAsString(currentUser); // µ±Ç°ÓÃ»§¶ÔÓ¦µÄ Json ×Ö·û´®
-			String readJson=null; // ¶ÁÈ¡µ½µÄÓÃ»§¶ÔÓ¦µÄ Json ×Ö·û´®
-			GameModel readUser=null; // ¶ÁÈ¡µ½µÄÓÃ»§
+			String nowJson=mapper.writeValueAsString(currentUser); // å½“å‰ç”¨æˆ·å¯¹åº”çš„ Json å­—ç¬¦ä¸²
+			String readJson=null; // è¯»å–åˆ°çš„ç”¨æˆ·å¯¹åº”çš„ Json å­—ç¬¦ä¸²
+			GameModel readUser=null; // è¯»å–åˆ°çš„ç”¨æˆ·
 			File file=new File("UserInfo.json");
-			Reader in=new FileReader(file); // µ×²ãÁ÷
-			BufferedReader userRead=new BufferedReader(in); // ÉÏ²ãÁ÷
-			while((readJson=userRead.readLine()) != null) { // ²»¶Ï¶ÁÈ¡ÓÃ»§¶ÔÓ¦µÄ Json ×Ö·û´®
-				// ¸üĞÂÓÃ»§Êı¾İ
+			Reader in=new FileReader(file); // åº•å±‚æµ
+			BufferedReader userRead=new BufferedReader(in); // ä¸Šå±‚æµ
+			while((readJson=userRead.readLine()) != null) { // ä¸æ–­è¯»å–ç”¨æˆ·å¯¹åº”çš„ Json å­—ç¬¦ä¸²
+				// æ›´æ–°ç”¨æˆ·æ•°æ®
 				readUser=mapper.readValue(readJson, GameModel.class);
 				if(currentUser.getUsername().equals(readUser.getUsername())) {
-					users.add(nowJson); // ¶ÁÈ¡µ½µ±Ç°ÓÃ»§µÄÔ­Ê¼Êı¾İ£¬½«ĞÂÊı¾İ¼ÓÈëÓÃ»§ÁĞ±í
+					users.add(nowJson); // è¯»å–åˆ°å½“å‰ç”¨æˆ·çš„åŸå§‹æ•°æ®ï¼Œå°†æ–°æ•°æ®åŠ å…¥ç”¨æˆ·åˆ—è¡¨
 				}
 				else {
 					users.add(readJson);
@@ -92,9 +91,9 @@ public class HandleDataList {
 			userRead.close();
 
 			Writer out=new FileWriter(file, false);
-			BufferedWriter writeLine=new BufferedWriter(out); // ÉÏ²ãÁ÷
+			BufferedWriter writeLine=new BufferedWriter(out); // ä¸Šå±‚æµ
 			Iterator<String> it = users.iterator();
-			while(it.hasNext()) { // ½«¸úĞÂÊı¾İºóµÄÓÃ»§ÁĞ±íÖØĞÂĞ´ÈëÎÄ¼ş
+			while(it.hasNext()) { // å°†è·Ÿæ–°æ•°æ®åçš„ç”¨æˆ·åˆ—è¡¨é‡æ–°å†™å…¥æ–‡ä»¶
 				writeLine.write(it.next());
 				writeLine.newLine();
 			}
@@ -106,26 +105,25 @@ public class HandleDataList {
 	}
 
 	/**
-	 * °´ÕıÈ·ÂÊÅÅĞò
+	 * æŒ‰æ­£ç¡®ç‡æ’åº
 	 * @param userList:
 	 * @return void
 	 * @date 2021/10/28 14:52
 	 * @author tou
-	 *
 	 */
 	public static List<GameModel> sortList(List<GameModel> userList) {
-		// ¶ÔÓÃ»§ÁĞ±í°´ÕıÈ·ÂÊ½øĞĞÅÅĞò
-		Collections.sort(userList, new Comparator<>() { // Ê¹ÓÃComparator±È½ÏÆ÷½Ó¿Ú
+		// å¯¹ç”¨æˆ·åˆ—è¡¨æŒ‰æ­£ç¡®ç‡è¿›è¡Œæ’åº
+		Collections.sort(userList, new Comparator<>() { // ä½¿ç”¨ Comparator æ¯”è¾ƒå™¨æ¥å£
 			@Override
 			public int compare(GameModel user1, GameModel user2) {
-				return ((Double) user2.getAccuracy()).compareTo(user1.getAccuracy()); // °´½µĞòÅÅÁĞ
+				return ((Double) user2.getAccuracy()).compareTo(user1.getAccuracy()); // æŒ‰é™åºæ’åˆ—
 			}
 		});
 		return userList;
 	}
 
 	/**
-	 * »ñÈ¡ÓÃ»§Êı¾İÁĞ±í
+	 * è·å–ç”¨æˆ·æ•°æ®åˆ—è¡¨
 	 * @return java.util.List<gameModule.model.GameModel>
 	 * @date 2021/10/28 14:40
 	 * @author tou
@@ -139,10 +137,10 @@ public class HandleDataList {
 	}
 
 	/**
-	 * É¾³ıÄ³ÓÃ»§¼°ÆäÊı¾İ
+	 * åˆ é™¤æŸç”¨æˆ·åŠå…¶æ•°æ®
 	 * @param currentUser :
 	 * @param targetUser :
-	 * @return boolean ·µ»ØÉ¾³ı½á¹û³É¹¦Óë·ñ
+	 * @return boolean è¿”å›åˆ é™¤ç»“æœæˆåŠŸä¸å¦
 	 * @date 2021/10/28 14:42
 	 * @author tou
 	 */
@@ -160,10 +158,10 @@ public class HandleDataList {
 
 
 	/**
-	 * ´ò¿ª¹Ø¿¨È¨ÏŞ
+	 * æ‰“å¼€å…³å¡æƒé™
 	 * @param currentUser:
 	 * @param targetUser :
-	 * @return boolean ·µ»ØÉèÖÃÊÇ·ñ³É¹¦
+	 * @return boolean è¿”å›è®¾ç½®æ˜¯å¦æˆåŠŸ
 	 * @date 2021/10/28 14:57
 	 * @author tou
 	 */
@@ -180,22 +178,22 @@ public class HandleDataList {
 
 
 	/**
-	 * ¸²Ğ´ÓÃ»§Êı¾İÎÄ¼ş
+	 * è¦†å†™ç”¨æˆ·æ•°æ®æ–‡ä»¶
 	 * @return boolean
 	 * @date 2021/10/28 16:27
 	 * @author tou
 	 */
 	private static boolean fileWrite() {
-		// Çå¿ÕÎÄ¼şÄÚÈİ£¬¸²Ğ´
+		// ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½İ£ï¿½ï¿½ï¿½Ğ´
 		clearInfoForFile("UserInfo.json");
-		// ´´½¨JacksonµÄºËĞÄ¶ÔÏóObjectMapper
+		// ï¿½ï¿½ï¿½ï¿½Jacksonï¿½Äºï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ObjectMapper
 		ObjectMapper mapper=new ObjectMapper();
 		PrintStream stream = null;
 		try {
 			for (GameModel gameModel : mUserList) {
-				// ½«¶ÔÏó×ª»»Îªjson×Ö·û´®
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îªjsonï¿½Ö·ï¿½ï¿½ï¿½
 				String json = mapper.writeValueAsString(gameModel);
-				FileWriter userFile = new FileWriter("UserInfo.json", true); // ÒÔ¸²Ğ´µÄ·½Ê½Ğ´ÈëÎÄ¼ş
+				FileWriter userFile = new FileWriter("UserInfo.json", true); // ï¿½Ô¸ï¿½Ğ´ï¿½Ä·ï¿½Ê½Ğ´ï¿½ï¿½ï¿½Ä¼ï¿½
 				BufferedWriter writeLine = new BufferedWriter(userFile);
 				writeLine.write(json);
 				writeLine.newLine();
@@ -210,7 +208,7 @@ public class HandleDataList {
 	}
 
 	/**
-	 * Çå¿ÕÎÄ¼şÄÚÈİ
+	 * æ¸…ç©ºæ–‡ä»¶å†…å®¹
 	 * @param fileName:
 	 * @return void
 	 * @date 2021/10/28 16:27

@@ -27,38 +27,37 @@ class Windowm extends JFrame
             "DoNotGoGentleIntoThatGoodNight.txt",
     };
 
-    String path1;//µÚÒ»¸öÎÄ¼şÄ¿Â¼
-    String path2;//µÚ¶ş¸öÎÄ¼şÄ¿Â¼
-    String File1;//µÚÒ»¸öÎÄ¼ş
-    String File2;//µÚ¶ş¸öÎÄ¼ş
-    int point;//±£´æµ±Ç°»î¶¯´°¿Ú
+    String path1;// ç¬¬ä¸€ä¸ªæ–‡ä»¶ç›®å½•
+    String path2;// ç¬¬äºŒä¸ªæ–‡ä»¶ç›®å½•
+    String File1;// ç¬¬ä¸€ä¸ªæ–‡ä»¶
+    String File2;// ç¬¬äºŒä¸ªæ–‡ä»¶
+    int point;// ä¿å­˜å½“å‰æ´»åŠ¨çª—å£
     GameModel user;
 
     private static final long serialVersionUID = 1L;
-    JPanel myPanel1 = new JPanel();//Ãæ°å1.1
-    JPanel myPanel2 =new JPanel();//Ãæ°å2.1
-    JPanel myPanel3 =new JPanel();//Ãæ°å3
-    JPanel myPanel4 =new JPanel();//Ãæ°å4
+    JPanel myPanel1 = new JPanel();// é¢æ¿ 1.1
+    JPanel myPanel2 =new JPanel();// é¢æ¿ 2.1
+    JPanel myPanel3 =new JPanel();// é¢æ¿ 3
+    JPanel myPanel4 =new JPanel();// é¢æ¿ 4
     JTextPane text1=new JTextPane();
     JTextPane text2=new JTextPane();
 
-    JButton bt1 = new JButton("´ò¿ªÎÄµµ");
-    JButton btMid = new JButton("ÅÅĞĞ°ñ");
-//    JButton bt2 = new JButton("´ò¿ªÎÄµµ2");
-    JButton bt3 = new JButton("ºË¶Ô");
+    JButton bt1 = new JButton(" æ‰“å¼€æ–‡æ¡£ ");
+    JButton btMid = new JButton(" æ’è¡Œæ¦œ ");
+    JButton bt3 = new JButton(" æ ¸å¯¹ ");
 
-    JPopupMenu jm = new JPopupMenu();//ÓÒ¼ü²Ëµ¥
-    JMenuItem copy = new JMenuItem("¸´ÖÆ");//²Ëµ¥Ïî
-    JMenuItem path = new JMenuItem("Õ³Ìù");
-    JMenuItem cut = new JMenuItem("¼ôÇĞ");
-    JMenuItem help = new JMenuItem("°ïÖú");
+    JPopupMenu jm = new JPopupMenu();// å³é”®èœå•
+    JMenuItem copy = new JMenuItem(" å¤åˆ¶ ");// èœå•é¡¹
+    JMenuItem path = new JMenuItem(" ç²˜è´´ ");
+    JMenuItem cut = new JMenuItem(" å‰ªåˆ‡ ");
+    JMenuItem help = new JMenuItem(" å¸®åŠ© ");
 
-    JScrollPane scro1=new JScrollPane(text1);//Ìí¼Ó¹ö¶¯Ìõ
-    JScrollPane scro2=new JScrollPane(text2);//Ìí¼Ó¹ö¶¯Ìõ
+    JScrollPane scro1=new JScrollPane(text1);// æ·»åŠ æ»šåŠ¨æ¡
+    JScrollPane scro2=new JScrollPane(text2);// æ·»åŠ æ»šåŠ¨æ¡
 
-    JSplitPane jSplitPane =new JSplitPane();//Éè¶¨Îª²ğ·Ö²¼¾Ö
-    JSplitPane jSplitPane2 =new JSplitPane();//Éè¶¨Îª²ğ·Ö²¼¾Ö
-    JSplitPane jSplitPane3 =new JSplitPane();//Éè¶¨Îª²ğ·Ö²¼¾Ö
+    JSplitPane jSplitPane =new JSplitPane();// è®¾å®šä¸ºæ‹†åˆ†å¸ƒå±€
+    JSplitPane jSplitPane2 =new JSplitPane();// è®¾å®šä¸ºæ‹†åˆ†å¸ƒå±€
+    JSplitPane jSplitPane3 =new JSplitPane();// è®¾å®šä¸ºæ‹†åˆ†å¸ƒå±€
 
     public Windowm(GameModel user)
     {
@@ -72,39 +71,38 @@ class Windowm extends JFrame
 
         myPanel3.add(bt1);
         myPanel3.add(btMid);
-//        myPanel3.add(bt2);
         myPanel4.add(bt3);
 
-        this.setTitle("ÎÄÕÂÄ£Ê½");
+        this.setTitle(" æ–‡ç« æ¨¡å¼ ");
         this.setBounds(100, 100, 600, 500);
-        jSplitPane.setContinuousLayout(true);//²Ù×÷¼ıÍ·£¬ÖØ»æÍ¼ĞÎ
-        jSplitPane2.setContinuousLayout(true);//²Ù×÷¼ıÍ·£¬ÖØ»æÍ¼ĞÎ
-        jSplitPane3.setContinuousLayout(true);//²Ù×÷¼ıÍ·£¬ÖØ»æÍ¼ĞÎ
+        jSplitPane.setContinuousLayout(true);// æ“ä½œç®­å¤´ï¼Œé‡ç»˜å›¾å½¢
+        jSplitPane2.setContinuousLayout(true);// æ“ä½œç®­å¤´ï¼Œé‡ç»˜å›¾å½¢
+        jSplitPane3.setContinuousLayout(true);// æ“ä½œç®­å¤´ï¼Œé‡ç»˜å›¾å½¢
 
-        jSplitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);//´¹Ö±·½Ïò
-        jSplitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);//Ë®Æ½·½Ïò
-        jSplitPane3.setOrientation(JSplitPane.VERTICAL_SPLIT);//´¹Ö±·½Ïò
+        jSplitPane2.setOrientation(JSplitPane.VERTICAL_SPLIT);// å‚ç›´æ–¹å‘
+        jSplitPane.setOrientation(JSplitPane.HORIZONTAL_SPLIT);// æ°´å¹³æ–¹å‘
+        jSplitPane3.setOrientation(JSplitPane.VERTICAL_SPLIT);// å‚ç›´æ–¹å‘
 
         myPanel1.setBorder(BorderFactory.createLineBorder(Color.green));
         myPanel2.setBorder(BorderFactory.createLineBorder(Color.red));
         myPanel3.setBorder(BorderFactory.createLineBorder(Color.yellow));
         myPanel4.setBorder(BorderFactory.createLineBorder(Color.blue));
 
-        jSplitPane.setLeftComponent(scro1);//×óÓÒ²¼¾ÖÖĞÌí¼Ó×é¼ş £¬Ãæ°å1
-        jSplitPane.setRightComponent(scro2);//×óÓÒ²¼¾ÖÖĞÌí¼Ó×é¼ş £¬Ãæ°å2
+        jSplitPane.setLeftComponent(scro1);// å·¦å³å¸ƒå±€ä¸­æ·»åŠ ç»„ä»¶ ï¼Œé¢æ¿ 1
+        jSplitPane.setRightComponent(scro2);// å·¦å³å¸ƒå±€ä¸­æ·»åŠ ç»„ä»¶ ï¼Œé¢æ¿ 2
 
-        jSplitPane2.setTopComponent(myPanel3);//ÉÏÏÂ²¼¾ÖÖĞÌí¼Ó×é¼ş £¬Ãæ°å1
-        jSplitPane2.setBottomComponent(jSplitPane);//ÉÏÏÂ²¼¾ÖÖĞÌí¼Ó×é¼ş £¬Ãæ°å1
+        jSplitPane2.setTopComponent(myPanel3);// ä¸Šä¸‹å¸ƒå±€ä¸­æ·»åŠ ç»„ä»¶ ï¼Œé¢æ¿ 1
+        jSplitPane2.setBottomComponent(jSplitPane);// ä¸Šä¸‹å¸ƒå±€ä¸­æ·»åŠ ç»„ä»¶ ï¼Œé¢æ¿ 1
 
         jSplitPane3.setTopComponent(jSplitPane2);
         jSplitPane3.setBottomComponent(myPanel4);
 
-        jSplitPane.setDividerSize(5);//ÉèÖÃ·Ö¸îÏßµÄ¿í¶È
-        jSplitPane2.setDividerSize(5);//ÉèÖÃ·Ö¸îÏßµÄ¿í¶È
-        jSplitPane3.setDividerSize(5);//ÉèÖÃ·Ö¸îÏßµÄ¿í¶È
-        setContentPane(jSplitPane3);//ÉèÖÃÎª¸¸Ä£¿é
+        jSplitPane.setDividerSize(5);// è®¾ç½®åˆ†å‰²çº¿çš„å®½åº¦
+        jSplitPane2.setDividerSize(5);// è®¾ç½®åˆ†å‰²çº¿çš„å®½åº¦
+        jSplitPane3.setDividerSize(5);// è®¾ç½®åˆ†å‰²çº¿çš„å®½åº¦
+        setContentPane(jSplitPane3);// è®¾ç½®ä¸ºçˆ¶æ¨¡å—
 
-        // ¸ù¾İÑ¡ÔñµÄ¹Ø¿¨ÔØÈëÎÄÕÂ
+        // æ ¹æ®é€‰æ‹©çš„å…³å¡è½½å…¥æ–‡ç« 
         Random random = new Random();
         text1.setEditable(false);
         switch (user.getDifficulty()){
@@ -115,7 +113,7 @@ class Windowm extends JFrame
                     new Read_File(path1);
                     File1= Read_File.getFile();
                     SimpleAttributeSet attrset = new SimpleAttributeSet();
-                    StyleConstants.setFontSize(attrset,16);//ÉèÖÃ×ÖºÅ
+                    StyleConstants.setFontSize(attrset,16);// è®¾ç½®å­—å·
                     Document docs=text1.getDocument();
                     docs.insertString(docs.getLength(), File1, attrset);
                 } catch (BadLocationException badLocationException) {
@@ -129,7 +127,7 @@ class Windowm extends JFrame
                     new Read_File(path1);
                     File1= Read_File.getFile();
                     SimpleAttributeSet attrset = new SimpleAttributeSet();
-                    StyleConstants.setFontSize(attrset,16);//ÉèÖÃ×ÖºÅ
+                    StyleConstants.setFontSize(attrset,16);// è®¾ç½®å­—å·
                     Document docs=text1.getDocument();
                     docs.insertString(docs.getLength(), File1, attrset);
                 } catch (BadLocationException badLocationException) {
@@ -143,7 +141,7 @@ class Windowm extends JFrame
                     new Read_File(path1);
                     File1= Read_File.getFile();
                     SimpleAttributeSet attrset = new SimpleAttributeSet();
-                    StyleConstants.setFontSize(attrset,16);//ÉèÖÃ×ÖºÅ
+                    StyleConstants.setFontSize(attrset,16);// è®¾ç½®å­—å·
                     Document docs=text1.getDocument();
                     docs.insertString(docs.getLength(), File1, attrset);
                 } catch (BadLocationException badLocationException) {
@@ -156,28 +154,26 @@ class Windowm extends JFrame
                 break;
         }
 
-        copy.addActionListener(new ActionListener()//´°¿Ú¼àÌı
+        copy.addActionListener(new ActionListener()// çª—å£ç›‘å¬
                                {
                                    @Override
-                                   public void actionPerformed(ActionEvent e4)//²Ëµ¥Ïî
+                                   public void actionPerformed(ActionEvent e4)// èœå•é¡¹
                                    {
                                        try{
-//                                           text1.copy();
                                            text2.copy();
                                        }catch(Exception e1){
                                        }
                                    }
                                }
         );
-        path.addActionListener(new ActionListener()//´°¿Ú¼àÌı
+        path.addActionListener(new ActionListener()// çª—å£ç›‘å¬
                                {
                                    @Override
-                                   public void actionPerformed(ActionEvent e4)//²Ëµ¥Ïî
+                                   public void actionPerformed(ActionEvent e4)// èœå•é¡¹
                                    {
                                        try{
-                                           if (point==1) {//ÓÉÓÚÓĞÁ½¸ö´°¿Ú£¬Òò´ËÉè¼ÆpointÀ´È·¶¨Õ³ÌùÔÚÄ³¸ö´°¿Ú
+                                           if (point==1) {// ç”±äºæœ‰ä¸¤ä¸ªçª—å£ï¼Œå› æ­¤è®¾è®¡ point æ¥ç¡®å®šç²˜è´´åœ¨æŸä¸ªçª—å£
 
-//                                               text1.paste();
                                            } else {
                                                text2.paste();
                                            }
@@ -186,79 +182,68 @@ class Windowm extends JFrame
                                    }
                                }
         );
-        cut.addActionListener(new ActionListener()//´°¿Ú¼àÌı
+        cut.addActionListener(new ActionListener()// çª—å£ç›‘å¬
                               {
                                   @Override
-                                  public void actionPerformed(ActionEvent e4)//²Ëµ¥Ïî
+                                  public void actionPerformed(ActionEvent e4)// èœå•é¡¹
                                   {
                                       try{
-//                                          text1.cut();
                                           text2.cut();
                                       }catch(Exception e1){
                                       }
                                   }
                               }
         );
-        help.addActionListener(new ActionListener()//´°¿Ú¼àÌı
+        help.addActionListener(new ActionListener()// çª—å£ç›‘å¬
                                {
                                    @Override
-                                   public void actionPerformed(ActionEvent e4)//²Ëµ¥Ïî
+                                   public void actionPerformed(ActionEvent e4)// èœå•é¡¹
                                    {
-                                       JOptionPane.showMessageDialog(null,"Ê¹ÓÃ·½·¨£ºÊäÈë»òÕßµã»÷´ò¿ªÁ½¸öÎÄ±¾£¬°´ºË¶Ô¼ü½øĞĞ±È½Ï\nºìÉ«±íÊ¾Æ¥ÅäÊ§°Ü£¬À¶É«±íÊ¾¶àÓà£¬ºÚÉ«ÎªÕı³£Æ¥ÅäÎÄ±¾","Ê¹ÓÃÖ¸ÄÏ",JOptionPane.PLAIN_MESSAGE);
+                                       JOptionPane.showMessageDialog(null," ä½¿ç”¨æ–¹æ³•ï¼šè¾“å…¥æˆ–è€…ç‚¹å‡»æ‰“å¼€ä¸¤ä¸ªæ–‡æœ¬ï¼ŒæŒ‰æ ¸å¯¹é”®è¿›è¡Œæ¯”è¾ƒ \n çº¢è‰²è¡¨ç¤ºåŒ¹é…å¤±è´¥ï¼Œè“è‰²è¡¨ç¤ºå¤šä½™ï¼Œé»‘è‰²ä¸ºæ­£å¸¸åŒ¹é…æ–‡æœ¬ "," ä½¿ç”¨æŒ‡å— ",JOptionPane.PLAIN_MESSAGE);
                                    }
                                }
         );
-
-//        text1.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                if (e.getButton() == MouseEvent.BUTTON3) {
-//                    jm.show(text1, e.getX(), e.getY()); // µ¯³ö²Ëµ¥
-//                    point=1;
-//                }
-//            }
-//        });
 
         text2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) {
-                    jm.show(text2, e.getX(), e.getY()); // µ¯³ö²Ëµ¥
+                    jm.show(text2, e.getX(), e.getY()); // å¼¹å‡ºèœå•
                     point=2;
                 }
             }
         });
 
-        jSplitPane.addComponentListener(new ComponentAdapter() {//ÍÏ¶¯´°¿Ú¼àÌı
+        jSplitPane.addComponentListener(new ComponentAdapter() {// æ‹–åŠ¨çª—å£ç›‘å¬
             @Override
             public void componentResized(ComponentEvent e) {
-                jSplitPane.setDividerLocation(jSplitPane3.getWidth()/2-7);//ÉèÖÃµÚÒ»Ìõ¿í¶È
+                jSplitPane.setDividerLocation(jSplitPane3.getWidth()/2-7);// è®¾ç½®ç¬¬ä¸€æ¡å®½åº¦
             }
         });
-        jSplitPane2.setDividerLocation(50);//Éè¶¨·Ö¸îÏßµÄ¾àÀë×ó±ßµÄÎ»ÖÃ
-        jSplitPane3.addComponentListener(new ComponentAdapter() {//ÍÏ¶¯´°¿Ú¼àÌı
+        jSplitPane2.setDividerLocation(50);// è®¾å®šåˆ†å‰²çº¿çš„è·ç¦»å·¦è¾¹çš„ä½ç½®
+        jSplitPane3.addComponentListener(new ComponentAdapter() {// æ‹–åŠ¨çª—å£ç›‘å¬
             @Override
             public void componentResized(ComponentEvent e) {
-                jSplitPane3.setDividerLocation(jSplitPane3.getHeight()-50);//ÉèÖÃµÚÈıÌõ¸ß¶È
+                jSplitPane3.setDividerLocation(jSplitPane3.getHeight()-50);// è®¾ç½®ç¬¬ä¸‰æ¡é«˜åº¦
             }
         });
 
-        bt1.addActionListener(new ActionListener()//´°¿Ú¼àÌı
+        bt1.addActionListener(new ActionListener()// çª—å£ç›‘å¬
                               {
                                   @Override
-                                  public void actionPerformed(ActionEvent e4)//²Ëµ¥Ïî
+                                  public void actionPerformed(ActionEvent e4)// èœå•é¡¹
                                   {
                                       try{
                                           text1.setText("");
                                           JFileChooser jfc=new JFileChooser();
                                           jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );
-                                          jfc.showDialog(new JLabel(), "Ñ¡Ôñ");
+                                          jfc.showDialog(new JLabel(), " é€‰æ‹© ");
                                           File file=jfc.getSelectedFile();
-                                          path1=file.getAbsolutePath();//»ñÈ¡ÎÄ¼ş¾ø¶ÔµØÖ·
+                                          path1=file.getAbsolutePath();// è·å–æ–‡ä»¶ç»å¯¹åœ°å€
                                           new Read_File(path1);
                                           File1= Read_File.getFile();
                                           SimpleAttributeSet attrset = new SimpleAttributeSet();
-                                          StyleConstants.setFontSize(attrset,16);//ÉèÖÃ×ÖºÅ
+                                          StyleConstants.setFontSize(attrset,16);// è®¾ç½®å­—å·
                                           Document docs=text1.getDocument();
                                           docs.insertString(docs.getLength(), File1, attrset);
                                       }catch(Exception e1){
@@ -270,96 +255,72 @@ class Windowm extends JFrame
         btMid.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                List<GameModel> rankList = HandleDataList.getUserList(); // »ñÈ¡ËùÓĞÓÃ»§ÅÅĞòºóµÄÁĞ±í
+                List<GameModel> rankList = HandleDataList.getUserList(); // è·å–æ‰€æœ‰ç”¨æˆ·æ’åºåçš„åˆ—è¡¨
                 try {
-                    // ÏÔÊ¾ÅÅĞĞ°ñÊÓÍ¼
+                    // æ˜¾ç¤ºæ’è¡Œæ¦œè§†å›¾
                     new RankListView(rankList, user).init();
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
             }
         });
-//        bt2.addActionListener(new ActionListener()//´°¿Ú¼àÌı
-//                              {
-//                                  @Override
-//                                  public void actionPerformed(ActionEvent e4)//²Ëµ¥Ïî
-//                                  {
-//                                      try{
-//                                          text2.setText("");
-//                                          JFileChooser jfc=new JFileChooser();
-//                                          jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES );
-//                                          jfc.showDialog(new JLabel(), "Ñ¡Ôñ");
-//                                          File file=jfc.getSelectedFile();
-//                                          path2=file.getAbsolutePath();//»ñÈ¡ÎÄ¼ş¾ø¶ÔµØÖ·
-//                                          new Read_File(path2);
-//                                          File2= Read_File.getFile();
-//                                          SimpleAttributeSet attrset = new SimpleAttributeSet();
-//                                          StyleConstants.setFontSize(attrset,16);//ÉèÖÃ×ÖºÅ
-//                                          Document docs=text2.getDocument();
-//                                          docs.insertString(docs.getLength(), File2, attrset);
-//                                      }catch(Exception e1){
-//                                          System.out.println("Ñ¡ÔñÎÄ¼ş³ö´í");
-//                                      }
-//                                  }
-//                              }
-//        );
-        bt3.addActionListener(new ActionListener()//´°¿Ú¼àÌı
+        bt3.addActionListener(new ActionListener()// çª—å£ç›‘å¬
                               {
                                   @Override
-                                  public void actionPerformed(ActionEvent e4)//²Ëµ¥Ïî
+                                  public void actionPerformed(ActionEvent e4)// èœå•é¡¹
                                   {
                                       try{
-                                          String dnas1;//Ëã·¨´¦ÀíÖ®ºóµÄ×Ö·û´®1
-                                          String dnas2;//Ëã·¨´¦ÀíÖ®ºóµÄ×Ö·û´®2
-                                          String jtp1;//JTextpaneµÄÄÚÈİ1
-                                          String jtp2;//JTextpaneµÄÄÚÈİ2
-                                          int len=0;	//´¦ÀíºóµÄ×Ö·û´®³¤¶È
+                                          String dnas1;// ç®—æ³•å¤„ç†ä¹‹åçš„å­—ç¬¦ä¸² 1
+                                          String dnas2;// ç®—æ³•å¤„ç†ä¹‹åçš„å­—ç¬¦ä¸² 2
+                                          String jtp1;//JTextpane çš„å†…å®¹ 1
+                                          String jtp2;//JTextpane çš„å†…å®¹ 2
+                                          int len=0;	// å¤„ç†åçš„å­—ç¬¦ä¸²é•¿åº¦
 
-                                          jtp1=text1.getText();//»ñÈ¡´°¿ÚÎÄ±¾
+                                          jtp1=text1.getText();// è·å–çª—å£æ–‡æœ¬
                                           jtp2=text2.getText();
-                                          text1.setText("");//Çå¿ÕÖ®Ç°ÄÚÈİ
+                                          text1.setText("");// æ¸…ç©ºä¹‹å‰å†…å®¹
                                           text2.setText("");
                                           Document docs1=text1.getDocument();
                                           Document docs2=text2.getDocument();
-                                          DNASequence dna=new DNASequence(jtp1,jtp2);//Í¨¹ı¹¹Ôì·½·¨´«µİ²ÎÊı
+                                          DNASequence dna=new DNASequence(jtp1,jtp2);// é€šè¿‡æ„é€ æ–¹æ³•ä¼ é€’å‚æ•°
                                           dna.runAnalysis();
                                           dna.traceback();
-                                          dnas1=dna.getString1();//»ñÈ¡´¦ÀíºóµÄ×Ö·û´®
+                                          dnas1=dna.getString1();// è·å–å¤„ç†åçš„å­—ç¬¦ä¸²
                                           dnas2=dna.getString2();
-                                          char[] s = dnas1.toCharArray();//×Ö·û´®×ªCharÊı×é
+                                          char[] s = dnas1.toCharArray();// å­—ç¬¦ä¸²è½¬ Char æ•°ç»„
                                           char[] p = dnas2.toCharArray();
                                           len=dnas1.length();
-                                          SimpleAttributeSet set2 = new SimpleAttributeSet();//ÉèÖÃÒ»¸öÊôĞÔ
-                                          StyleConstants.setFontSize(set2,16);//ÉèÖÃ×ÖºÅ
+                                          SimpleAttributeSet set2 = new SimpleAttributeSet();// è®¾ç½®ä¸€ä¸ªå±æ€§
+                                          StyleConstants.setFontSize(set2,16);// è®¾ç½®å­—å·
                                           int rightCount = 0;
                                           for(int i=0;i<len;i++){
                                               if(s[i]=='-'){
-                                                  StyleConstants.setForeground(set2,Color.BLUE);//ÉèÖÃÎÄ×ÖÑÕÉ«
+                                                  StyleConstants.setForeground(set2,Color.BLUE);// è®¾ç½®æ–‡å­—é¢œè‰²
                                                   docs2.insertString(docs2.getLength(),String.valueOf(p[i]), set2);
                                               }else if(p[i]=='-'){
-                                                  StyleConstants.setForeground(set2,Color.BLUE);//ÉèÖÃÎÄ×ÖÑÕÉ«
+                                                  StyleConstants.setForeground(set2,Color.BLUE);// è®¾ç½®æ–‡å­—é¢œè‰²
                                                   docs1.insertString(docs1.getLength(),String.valueOf(s[i]), set2);
                                               }else if(s[i]==p[i]){
                                                   rightCount++;
-                                                  StyleConstants.setForeground(set2,Color.black);//ÉèÖÃÎÄ×ÖÑÕÉ«
+                                                  StyleConstants.setForeground(set2,Color.black);// è®¾ç½®æ–‡å­—é¢œè‰²
                                                   docs1.insertString(docs1.getLength(),String.valueOf(s[i]), set2);
                                                   docs2.insertString(docs2.getLength(),String.valueOf(p[i]), set2);
                                               }else if(s[i]!=p[i]){
-                                                  StyleConstants.setForeground(set2,Color.red);//ÉèÖÃÎÄ×ÖÑÕÉ«
+                                                  StyleConstants.setForeground(set2,Color.red);// è®¾ç½®æ–‡å­—é¢œè‰²
                                                   docs1.insertString(docs1.getLength(),String.valueOf(s[i]), set2);
                                                   docs2.insertString(docs2.getLength(),String.valueOf(p[i]), set2);
                                               }else{
-                                                  System.out.print("¿¼ÂÇ¸ü¶àÑÕÉ«");
+                                                  System.out.print(" è€ƒè™‘æ›´å¤šé¢œè‰² ");
                                               }
                                           }
 
-                                          // ¸üĞÂÊı¾İ
+                                          // æ›´æ–°æ•°æ®
                                           user.setTypeCount(len);
                                           user.setRightCount(rightCount);
                                           HandleDataList.saveCurrentUserData(user);
-                                          btMid.setText("ÕıÈ·ÂÊ£º" + user.getNewAccuracy() * 100 + "%");
+                                          btMid.setText(" æ­£ç¡®ç‡ï¼š" + user.getNewAccuracy() * 100 + "%");
                                       }catch(Exception e1){
-                                          System.out.println("Ñ¡ÔñÎÄ¼ş2³ö´í");
+                                          System.out.println(" é€‰æ‹©æ–‡ä»¶ 2 å‡ºé”™ ");
                                       }
                                   }
                               }

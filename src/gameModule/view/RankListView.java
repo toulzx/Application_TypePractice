@@ -16,14 +16,12 @@ import loginModule.view.BackGroundPanel;
 import loginModule.utils.ScreenUtils;
 
 /**
- * ÅÅĞĞ°ñÊÓÍ¼
- * »æÖÆÅÅĞĞ°ñ½çÃæ
- *
- * @author lzx
+ * æ’è¡Œæ¦œè§†å›¾
+ * ç»˜åˆ¶æ’è¡Œæ¦œç•Œé¢
  */
 public class RankListView {
 
-	JFrame jf=new JFrame("ÅÅĞĞ°ñ");
+	JFrame jf=new JFrame(" æ’è¡Œæ¦œ ");
 
 
 	final int WIDTH = 800;
@@ -38,77 +36,83 @@ public class RankListView {
 	}
 	
 	public void init() {
-		// ÉèÖÃ´°¿ÚÊôĞÔ
+		// è®¾ç½®çª—å£å±æ€§
 		jf.setBounds((ScreenUtils.getScreenWidth() - WIDTH) / 2, 
-				(ScreenUtils.getScreenHeight() - HEIGHT) / 2, WIDTH, HEIGHT); // ÉèÖÃ´°¿Ú¾ÓÖĞ
+				(ScreenUtils.getScreenHeight() - HEIGHT) / 2, WIDTH, HEIGHT); // è®¾ç½®çª—å£å±…ä¸­
 		jf.setLayout(new FlowLayout());
 		jf.setResizable(true);
 		try {
-			jf.setIconImage(ImageIO.read(new File("images\\logo.png"))); //ÉèÖÃlogo
+			jf.setIconImage(ImageIO.read(new File("src\\images\\logo.png"))); // è®¾ç½® logo
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		// ÉèÖÃ´°¿ÚÄÚÈİ
-		
-		// ±³¾°Í¼Æ¬
+		// è®¾ç½®çª—å£å†…å®¹
+
+		// èƒŒæ™¯å›¾ç‰‡
 		BackGroundPanel bgPanel = null;
 		try {
-			bgPanel = new BackGroundPanel(ImageIO.read(new File("images\\1.jpg")));
+			bgPanel = new BackGroundPanel(ImageIO.read(new File("src\\images\\1.jpg")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		assert bgPanel != null;
 		bgPanel.setBounds(0,0,WIDTH,HEIGHT);
-		
-		// ±êÌâ
-		JLabel title = new JLabel("ÅÅĞĞ°ñ");
-		title.setFont(new Font("¿¬Ìå", Font.BOLD, 30));
+
+		// æ ‡é¢˜
+		JLabel title = new JLabel(" æ’è¡Œæ¦œ ");
+		title.setFont(new Font(" æ¥·ä½“ ", Font.BOLD, 30));
 
 
-		// ÌõÄ¿
-		JLabel nameJl = new JLabel("ĞÕÃû");
-		JLabel trueCountJl = new JLabel("´ò×Ö×Ü¸öÊı");
-		JLabel scoreJl = new JLabel("ÀúÊ·ÕıÈ·ÂÊ");
-		JLabel progressJl = new JLabel("ÉÏ´ÎÕıÈ·ÂÊ");
-		JLabel deleteJl = new JLabel("¹ÜÀí");
+		// æ¡ç›®
+		JLabel nameJl = new JLabel(" å§“å ");
+		JLabel trueCountJl = new JLabel(" æ‰“å­—æ€»ä¸ªæ•° ");
+		JLabel scoreJl = new JLabel(" å†å²æ­£ç¡®ç‡ ");
+		JLabel progressJl = new JLabel(" ä¸Šæ¬¡æ­£ç¡®ç‡ ");
+		JLabel deleteJl = new JLabel(" ç®¡ç† ");
+		JLabel freeJl = new JLabel("å…³å¡æƒé™");
 
-		Font f1 = new Font("¿¬Ìå", Font.BOLD, 22);
-		Font f2 = new Font("¿¬Ìå", Font.BOLD, 20);
+		Font f1 = new Font(" æ¥·ä½“ ", Font.BOLD, 22);
+		Font f2 = new Font(" æ¥·ä½“ ", Font.BOLD, 20);
 
 		nameJl.setFont(f1);
 		trueCountJl.setFont(f1);
 		scoreJl.setFont(f1);
 		progressJl.setFont(f1);
 		deleteJl.setFont(f1);
+		freeJl.setFont(f1);
 
-		// ±êÌâ
+		// æ ‡é¢˜
 		Box box = Box.createVerticalBox();
 		box.add(title);
 		box.add(Box.createVerticalStrut(15));
 
-		// ÌõÄ¿-ĞÕÃû
+		// æ¡ç›® - å§“å
 		Box boxHone = Box.createVerticalBox();
 		boxHone.add(nameJl);
 
-		// ÌõÄ¿-´ò×Ö×Ü¸öÊı
+		// æ¡ç›® - æ‰“å­—æ€»ä¸ªæ•°
 		Box boxHtwo = Box.createVerticalBox();
 		boxHtwo.add(trueCountJl);
 
-		// ÌõÄ¿-ÕıÈ·ÂÊ
+		// æ¡ç›® - æ­£ç¡®ç‡
 		Box boxHthree = Box.createVerticalBox();
-        boxHthree.add(scoreJl);
+		boxHthree.add(scoreJl);
 
-        // ÉÏÒ»´ÎµÄÕıÈ·ÂÊ
+		// ä¸Šä¸€æ¬¡çš„æ­£ç¡®ç‡
 		Box boxHfour = Box.createVerticalBox();
 		boxHfour.add(progressJl);
 
-		// ÌõÄ¿-°´Å¥
+		// æ¡ç›® - åˆ é™¤æŒ‰é’®
 		Box boxHfive = Box.createVerticalBox();
 		boxHfive.add(deleteJl);
 
+		// æ¡ç›® - å…³å¡æƒé™æŒ‰é’®
+		Box boxHsix = Box.createVerticalBox();
+		boxHsix.add(freeJl);
 
-		// ÌõÄ¿µü´úÆ÷-ÊäÈëÃ¿¸öÓÃ»§ĞÅÏ¢
+
+		// æ¡ç›®è¿­ä»£å™¨ - è¾“å…¥æ¯ä¸ªç”¨æˆ·ä¿¡æ¯
 		for (GameModel user : mRankList) {
 			JLabel name = new JLabel(user.getNickname());
 			name.setFont(f2);
@@ -129,27 +133,50 @@ public class RankListView {
 			JButton deleteBtn = new JButton("delete");
 			deleteBtn.setBackground(Color.yellow);
 			deleteBtn.setPreferredSize(new Dimension(70,20));
+
+			JButton freeBtn = new JButton("free");
+			freeBtn.setBackground(Color.white);
+			freeBtn.setPreferredSize(new Dimension(70,20));
+
 			GameModel finalCurrentUser = user;
 			deleteBtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent actionEvent) {
-					// Èç¹ûÊÇ¹ÜÀíÔ±£¬É¾³ı¼ü²ÅÄÜÆğ×÷ÓÃ
+					// å¦‚æœæ˜¯ç®¡ç†å‘˜ï¼Œåˆ é™¤é”®æ‰èƒ½èµ·ä½œç”¨
 					if (HandleDataList.deleteUser(mCurrentUser, finalCurrentUser)) {
-						JOptionPane.showMessageDialog (jf, "É¾³ı³É¹¦", "ÌáÊ¾ÏûÏ¢",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog (jf, " åˆ é™¤æˆåŠŸ ", " æç¤ºæ¶ˆæ¯ ",JOptionPane.WARNING_MESSAGE);
 						try {
 							jf.dispose();
 						} catch (Exception ex) {
 							ex.printStackTrace();
 						}
 					} else {
-						JOptionPane.showMessageDialog (jf, "É¾³ıÊ§°Ü£¬ÄãÃ»ÓĞ´ËÈ¨ÏŞ", "ÌáÊ¾ÏûÏ¢",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog (jf, " åˆ é™¤å¤±è´¥ï¼Œä½ æ²¡æœ‰æ­¤æƒé™ ", " æç¤ºæ¶ˆæ¯ ",JOptionPane.WARNING_MESSAGE);
 					}
 				}
 			});
 			boxHfive.add(deleteBtn);
+
+			freeBtn.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent actionEvent) {
+					// å¦‚æœæ˜¯ç®¡ç†å‘˜ï¼Œæ­¤é”®æ‰èƒ½èµ·ä½œç”¨
+					if (HandleDataList.setLevelFree(mCurrentUser, finalCurrentUser)) {
+						JOptionPane.showMessageDialog (jf, "å…³å¡æƒé™å¼€å¯æˆåŠŸ", "æç¤ºæ¶ˆæ¯",JOptionPane.WARNING_MESSAGE);
+						try {
+							jf.dispose();
+						} catch (Exception ex) {
+							ex.printStackTrace();
+						}
+					} else {
+						JOptionPane.showMessageDialog (jf, "ä½ æ²¡æœ‰æ­¤æƒé™", "æç¤ºæ¶ˆæ¯",JOptionPane.WARNING_MESSAGE);
+					}
+				}
+			});
+			boxHsix.add(freeBtn);
 		}
 
-        // ÌõÄ¿ÈİÆ÷
+		// æ¡ç›®å®¹å™¨
 		Box boxH = Box.createHorizontalBox();
         boxH.add(boxHone);
         boxH.add(Box.createHorizontalStrut(30));
@@ -160,6 +187,9 @@ public class RankListView {
         boxH.add(boxHfour);
         boxH.add(Box.createHorizontalStrut(30));
         boxH.add(boxHfive);
+        boxH.add(Box.createHorizontalStrut(30));
+        boxH.add(boxHsix);
+
 
         box.add(boxH);
 		

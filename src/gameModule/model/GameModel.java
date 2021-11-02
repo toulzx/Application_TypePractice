@@ -5,34 +5,36 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import loginModule.model.Register;
 
 /**
- * ��Ϸģ��,ע��ģ�͵����ࡣ
- * ÿ��ע��һ�����û��������Ը��ݸ��û�ģ�͵õ�һ���µ���Ϸģ�ͣ��˺���û���������Ϸ��Ϊ�����ڴ�ģ�ͻ����Ϸ�����
+ * 游戏模型，注册模型的子类。
+ * 每当注册一个新用户，即可以根据该用户模型得到一个新的游戏模型，此后该用户的所有游戏行为都将在此模型基础上发生。
  * @see loginModule.model.Register
- *
  */
 public class GameModel extends Register{
 
-	// �ų����ԣ�������Ϸģ��ʱ���ó�Ա���������ӵ�json
-	@JsonIgnore // �Ѷ�
+	// 排除属性，处理游戏模型时，该成员变量不添加到 json
+	@JsonIgnore // 模式
+	private int model=0;
+	@JsonIgnore // 难度
 	private int difficulty=5;
-	@JsonIgnore// �������ʷ������ȷ��
+	@JsonIgnore// 该玩家历史打字正确率
 	private double accuracy=0;
-	@JsonIgnore // ������Ϸ���ָ���
+	@JsonIgnore // 本次游戏打字个数
 	private long typeCount=0;
-	@JsonIgnore// ������Ϸ������ȷ��
+	@JsonIgnore// 本次游戏打字正确数
 	private long rightCount=0;
-	// ������ȷ������
+	// 打字正确率增量
 	private double newAccuracy =0;
 
 
+
 	/**
-	 * ���췽�����ø����Ĭ�Ϲ��췽�����õ�һ����Ϸģ��ʵ����������ԭ�����Ծ�ΪĬ��ֵ��
-	 * ���ڴ˻����������ˡ��Ѷȡ����ԣ������û��Ѿ�ͨ�ص���Ŀ������Ĭ���Ѷȡ�
+	 * 构造方法调用父类的默认构造方法；得到一个游戏模型实例，其所有原有属性均为默认值；
+	 * 但在此基础上新增了 “难度” 属性，根据用户已经通关的数目，设置默认难度。
 	 * @see loginModule.model.Register#Register()
 	 */
 	public GameModel(){
 		super();
-		// �����û��Ѿ�ͨ�ص���Ŀ������Ĭ���Ѷ�
+		// 根据用户已经通关的数目，设置默认难度
 		switch(passNum) {
 		case 0:
 			difficulty=5;
@@ -83,5 +85,10 @@ public class GameModel extends Register{
 		this.newAccuracy = newAccuracy;
 	}
 
-	
+	public int getModel() {
+		return model;
+	}
+	public void setModel(int model) {
+		this.model = model;
+	}
 }

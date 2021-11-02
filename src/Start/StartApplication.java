@@ -10,7 +10,7 @@ import loginModule.view.RegisterView;
  */
 public class StartApplication {
 
-    //µÇÂ½½çÃæµÄÈë¿Ú
+    // ç™»é™†ç•Œé¢çš„å…¥å£
     public static void main(String[] args) {
         try {
             new LoginView().init();

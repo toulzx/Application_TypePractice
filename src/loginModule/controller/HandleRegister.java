@@ -3,42 +3,39 @@ package loginModule.controller;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
-import com.fasterxml.jackson.databind.ObjectMapper; // µ¼ÈëÍâ²¿°ü
+import com.fasterxml.jackson.databind.ObjectMapper; // å¯¼å…¥å¤–éƒ¨åŒ…
 
 import loginModule.model.Register;
 
 /**
- * ×¢²á´¦Àí£º
- * ½«Ä£ĞÍÖĞµÄÊı¾İ×ª»»Îªjson×Ö·û´®¸ñÊ½²¢Ğ´Èëµ½ÎÄ¼şÖĞ£»
- * Ê¹ÓÃjson´æ´¢£¬±ãÓÚÎÄ¼ş½»»¥ºÍÔÄ¶ÁĞŞ¸Ä¡£
- * @author ¶ÎÖ¾³¬
+ * æ³¨å†Œå¤„ç†ï¼š
+ * å°†æ¨¡å‹ä¸­çš„æ•°æ®è½¬æ¢ä¸º json å­—ç¬¦ä¸²æ ¼å¼å¹¶å†™å…¥åˆ°æ–‡ä»¶ä¸­ï¼›
+ * ä½¿ç”¨ json å­˜å‚¨ï¼Œä¾¿äºæ–‡ä»¶äº¤äº’å’Œé˜…è¯»ä¿®æ”¹ã€‚
  *
  */
 public class HandleRegister {
 
 	/**
-	 * ×¢²áÄ£ĞÍ´¦Àí·½·¨£º
-	 * ¶ÔÓÚ²ÎÊı¡°×¢²áÄ£ĞÍ¡±£¬½«Æä¸÷ÊôĞÔ¼°Êı¾İĞ´ÈëjsonÎÄ¼ş£»
-	 * Ê¹ÓÃÁËÍâ²¿°üjacksonÖĞµÄObjectMapperÀà¡£ÀûÓÃ¸ÃÀàµÄwriteValue·½·¨£¬½«¶ÔÏó×ª»»Îªjson×Ö·û´®²¢Ğ´ÈëjsonÎÄ¼ş¡£
+	 * æ³¨å†Œæ¨¡å‹å¤„ç†æ–¹æ³•ï¼š
+	 * å¯¹äºå‚æ•° â€œæ³¨å†Œæ¨¡å‹â€ï¼Œå°†å…¶å„å±æ€§åŠæ•°æ®å†™å…¥ json æ–‡ä»¶ï¼›
+	 * ä½¿ç”¨äº†å¤–éƒ¨åŒ… jackson ä¸­çš„ ObjectMapper ç±»ã€‚åˆ©ç”¨è¯¥ç±»çš„ writeValue æ–¹æ³•ï¼Œå°†å¯¹è±¡è½¬æ¢ä¸º json å­—ç¬¦ä¸²å¹¶å†™å…¥ json æ–‡ä»¶ã€‚
 	 * @see com.fasterxml.jackson.databind.ObjectMapper
 	 * @see com.fasterxml.jackson.databind.ObjectMapper#writeValue(java.io.Writer, Object)
 	 * @see com.fasterxml.jackson.databind.ObjectMapper#writeValue
-	 * @param register ×¢²áÄ£ĞÍ
+	 * @param register æ³¨å†Œæ¨¡å‹
 	 */
 	public static void writeRegisterModel(Register register) {
-		// ´´½¨JacksonµÄºËĞÄ¶ÔÏóObjectMapper
+		// åˆ›å»º Jackson çš„æ ¸å¿ƒå¯¹è±¡ ObjectMapper
 		ObjectMapper mapper=new ObjectMapper();
-		
+
 		try {
-			// ½«¶ÔÏó×ª»»Îªjson×Ö·û´®
+			// å°†å¯¹è±¡è½¬æ¢ä¸º json å­—ç¬¦ä¸²
 			String json=mapper.writeValueAsString(register);
 			System.out.println(json);
-			
+
 			FileWriter userFile=new FileWriter("UserInfo.json", true);
 			BufferedWriter writeLine= new BufferedWriter(userFile);
 			writeLine.write(json);
-//			// ½«¶ÔÏó×ª»»Îªjson×Ö·û´®£¬²¢ÒÔ×·¼ÓµÄ·½Ê½Ğ´ÈëÎÄ¼ş
-//			mapper.writeValue(userFile, register);
 			writeLine.newLine();
 			writeLine.close();
 			register.setRegisterSuccess(true);
@@ -48,10 +45,5 @@ public class HandleRegister {
 			e.printStackTrace();
 		}
 	}
-	
-//	public static void main(String args[]) {
-//		Register newUser=new Register("3200429417", "123456", "ÄĞ");
-//		HandleRegister handleUser=new HandleRegister();
-//		handleUser.writeRegisterModel(newUser);
-//	}
+
 }

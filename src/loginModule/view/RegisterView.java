@@ -12,65 +12,64 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 /**
- * ×¢²áÊÓÍ¼£º
- * »æÖÆ×¢²á½çÃæ
- * @author ¶ÎÖ¾³¬
+ * æ³¨å†Œè§†å›¾ï¼š
+ * ç»˜åˆ¶æ³¨å†Œç•Œé¢
  *
  */
 public class RegisterView {
-    JFrame jf = new JFrame("×¢²á");
+    JFrame jf = new JFrame("æ³¨å†Œ");
 
     final int WIDTH = 500;
     final int HEIGHT = 400;
 
 
-    //×é×°ÊÓÍ¼
+    //ç»„è£…è§†å›¾
     public void init() throws Exception {
-        //ÉèÖÃ´°¿ÚµÄÊôĞÔ
+        //è®¾ç½®çª—å£çš„å±æ€§
         jf.setBounds((ScreenUtils.getScreenWidth()-WIDTH)/2,(ScreenUtils.getScreenHeight()-HEIGHT)/2,WIDTH,HEIGHT);
         jf.setResizable(false);
-        jf.setIconImage(ImageIO.read(new File("images\\logo.png")));
+        jf.setIconImage(ImageIO.read(new File("src\\images\\logo.png")));
 
-        BackGroundPanel bgPanel = new BackGroundPanel(ImageIO.read(new File("images\\regist.jpg")));
+        BackGroundPanel bgPanel = new BackGroundPanel(ImageIO.read(new File("src\\images\\regist.jpg")));
         bgPanel.setBounds(0,0,WIDTH,HEIGHT);
 
 
         Box vBox = Box.createVerticalBox();
         
-        //×é×°êÇ³Æ
+        //ç»„è£…æ˜µç§°
         Box nBox = Box.createHorizontalBox();
-        JLabel nLabel = new JLabel("êÇ    ³Æ£º");
+        JLabel nLabel = new JLabel("æ˜µ    ç§°ï¼š");
         JTextField nField = new JTextField(15);
 
         nBox.add(nLabel);
         nBox.add(Box.createHorizontalStrut(20));
         nBox.add(nField);
 
-        //×é×°ÓÃ»§Ãû
+        //ç»„è£…ç”¨æˆ·å
         Box uBox = Box.createHorizontalBox();
-        JLabel uLabel = new JLabel("ÓÃ»§Ãû£º");
+        JLabel uLabel = new JLabel("ç”¨æˆ·åï¼š");
         JTextField uField = new JTextField(15);
 
         uBox.add(uLabel);
         uBox.add(Box.createHorizontalStrut(20));
         uBox.add(uField);
 
-        //×é×°ÃÜÂë
+        //ç»„è£…å¯†ç 
         Box pBox = Box.createHorizontalBox();
-        JLabel pLabel = new JLabel("ÃÜ    Âë£º");
+        JLabel pLabel = new JLabel("å¯†    ç ï¼š");
         JPasswordField pField = new JPasswordField(15);
 
         pBox.add(pLabel);
         pBox.add(Box.createHorizontalStrut(20));
         pBox.add(pField);
 
-        //×é×°ĞÔ±ğ
+        //ç»„è£…æ€§åˆ«
         Box gBox = Box.createHorizontalBox();
-        JLabel gLabel = new JLabel("ĞÔ    ±ğ£º");
-        JRadioButton maleBtn = new JRadioButton("ÄĞ",true);
-        JRadioButton femaleBtn = new JRadioButton("Å®",false);
+        JLabel gLabel = new JLabel("æ€§    åˆ«ï¼š");
+        JRadioButton maleBtn = new JRadioButton("ç”·",true);
+        JRadioButton femaleBtn = new JRadioButton("å¥³",false);
 
-        //ÊµÏÖµ¥Ñ¡µÄĞ§¹û
+        //å®ç°å•é€‰çš„æ•ˆæœ
         ButtonGroup bg = new ButtonGroup();
         bg.add(maleBtn);
         bg.add(femaleBtn);
@@ -81,13 +80,13 @@ public class RegisterView {
         gBox.add(femaleBtn);
         gBox.add(Box.createHorizontalStrut(120));
 
-        //×é×°ÑéÖ¤Âë
+        //ç»„è£…éªŒè¯ç 
 //        Box cBox = Box.createHorizontalBox();
-//        JLabel cLabel = new JLabel("ÑéÖ¤Âë£º");
+//        JLabel cLabel = new JLabel("éªŒè¯ç ï¼š");
 //        JTextField cField = new JTextField(4);
 //        JLabel cImg = new JLabel(new ImageIcon(ImageRequestUtils.getImage("http://localhost:8080/code/getCheckCode")));
-//        //¸øÄ³¸ö×é¼şÉèÖÃÌáÊ¾ĞÅÏ¢
-//        cImg.setToolTipText("µã»÷Ë¢ĞÂ");
+//        //ç»™æŸä¸ªç»„ä»¶è®¾ç½®æç¤ºä¿¡æ¯
+//        cImg.setToolTipText("ç‚¹å‡»åˆ·æ–°");
 //        cImg.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e) {
@@ -101,15 +100,15 @@ public class RegisterView {
 //        cBox.add(cField);
 //        cBox.add(cImg);
 
-        //×é×°°´Å¥
+        //ç»„è£…æŒ‰é’®
         Box btnBox = Box.createHorizontalBox();
-        JButton registBtn = new JButton("×¢²á");
-        JButton backBtn = new JButton("·µ»ØµÇÂ¼Ò³Ãæ");
+        JButton registBtn = new JButton("æ³¨å†Œ");
+        JButton backBtn = new JButton("è¿”å›ç™»å½•é¡µé¢");
 
-        registBtn.addActionListener(new ActionListener() { //Ê¹ÓÃÄäÃûÀà£¬×¢²áÎª¡°×¢²á¡±°´Å¥µÄ¼àÊÓÆ÷
+        registBtn.addActionListener(new ActionListener() { //ä½¿ç”¨åŒ¿åç±»ï¼Œæ³¨å†Œä¸ºâ€œæ³¨å†Œâ€æŒ‰é’®çš„ç›‘è§†å™¨
             @Override
             public void actionPerformed(ActionEvent e) {
-                //»ñÈ¡ÓÃ»§Â¼ÈëµÄĞÅÏ¢
+                //è·å–ç”¨æˆ·å½•å…¥çš„ä¿¡æ¯
                 String username = uField.getText().trim();
 				String password = new String(pField.getPassword());
                 String nickname = nField.getText().trim();
@@ -120,8 +119,8 @@ public class RegisterView {
                 HandleRegister.writeRegisterModel(newUser);
                 
                 if(newUser.getRegisterSuccess()) { 
-                	// ×¢²á³É¹¦
-                	JOptionPane.showMessageDialog(jf,"×¢²á³É¹¦£¬¼´½«·µ»ØµÇÂ¼Ò³Ãæ");
+                	// æ³¨å†ŒæˆåŠŸ
+                	JOptionPane.showMessageDialog(jf,"æ³¨å†ŒæˆåŠŸï¼Œå³å°†è¿”å›ç™»å½•é¡µé¢");
                     try {
                         new LoginView().init();
                         jf.dispose();
@@ -131,16 +130,16 @@ public class RegisterView {
                     }
                 }
                 else{
-                    //×¢²áÊ§°Ü
-                    JOptionPane.showMessageDialog(jf,"×¢²áÊ§°Ü£¬ÇëÖØĞÂÊäÈë");
+                    //æ³¨å†Œå¤±è´¥
+                    JOptionPane.showMessageDialog(jf,"æ³¨å†Œå¤±è´¥ï¼Œè¯·é‡æ–°è¾“å…¥");
                 }
             }
         });
 
-        backBtn.addActionListener(new ActionListener() { // Îª¡°·µ»ØµÇÂ½Ò³Ãæ¡±°´Å¥×¢²á¼àÊÓÆ÷
+        backBtn.addActionListener(new ActionListener() { // ä¸ºâ€œè¿”å›ç™»é™†é¡µé¢â€æŒ‰é’®æ³¨å†Œç›‘è§†å™¨
             @Override
             public void actionPerformed(ActionEvent e) {
-                //·µ»Øµ½µÇÂ¼Ò³Ãæ¼´¿É
+                //è¿”å›åˆ°ç™»å½•é¡µé¢å³å¯
                 try {
                     new LoginView().init();
                     jf.dispose();

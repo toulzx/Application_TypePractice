@@ -21,7 +21,7 @@ import loginModule.utils.ScreenUtils;
 
 public class GameView {
 
-	JFrame jf=new JFrame("×Ö·ûÄ£Ê½");
+	JFrame jf=new JFrame(" å­—ç¬¦æ¨¡å¼ ");
 	
 	private GameModel user=null;
 	Timer timeThread=null;
@@ -36,23 +36,23 @@ public class GameView {
 	
 	
 	public void init() throws Exception {
-		
-		// ÉèÖÃ´°¿ÚÏà¹ØÊôĞÔ
+
+// è®¾ç½®çª—å£ç›¸å…³å±æ€§
 		jf.setBounds((ScreenUtils.getScreenWidth() - WIDTH) / 2,
 				(ScreenUtils.getScreenHeight() - HEIGHT) / 2, WIDTH, HEIGHT);
 		jf.setResizable(true);
-		jf.setIconImage(ImageIO.read(new File("images\\logo.png"))); // ÉèÖÃlogo
+		jf.setIconImage(ImageIO.read(new File("src\\images\\logo.png"))); // è®¾ç½® logo
 		jf.setBackground(Color.BLACK);
 		jf.setVisible(true);
-		
-		// ÉèÖÃ´°¿ÚÄÚÈİ
-		
-		// ÓÎÏ·¿ØÖÆ
+
+		// è®¾ç½®çª—å£å†…å®¹
+
+		// æ¸¸æˆæ§åˆ¶
 		Box cBox=Box.createHorizontalBox();
-		JButton stopBut=new JButton("ÔİÍ£");
-		JButton continueBut=new JButton("¼ÌĞø");
-		JButton exitBut = new JButton("·µ»Ø");
-		JButton rankBut = new JButton("ÅÅĞĞ°ñ");
+		JButton stopBut=new JButton(" æš‚åœ ");
+		JButton continueBut=new JButton(" ç»§ç»­ ");
+		JButton exitBut = new JButton(" è¿”å› ");
+		JButton rankBut = new JButton(" æ’è¡Œæ¦œ ");
 		
 		stopBut.addActionListener(new ActionListener() {
 			@Override
@@ -64,7 +64,7 @@ public class GameView {
 		continueBut.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// ÇëÇóÓÎÏ·´°¿Ú»ñµÃ½¹µã
+				// è¯·æ±‚æ¸¸æˆçª—å£è·å¾—ç„¦ç‚¹
 				if (!gamePanel.isFocusable()){
 					gamePanel.setFocusable(true);
 				}
@@ -78,8 +78,8 @@ public class GameView {
 		exitBut.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				HandleDataList.saveCurrentUserData(user); // ½áÊøÓÎÏ·Ç°ÏÈ±£´æÓÃ»§Êı¾İ
-				jf.dispose(); // ÍË³ö
+				HandleDataList.saveCurrentUserData(user); // ç»“æŸæ¸¸æˆå‰å…ˆä¿å­˜ç”¨æˆ·æ•°æ®
+				jf.dispose(); // é€€å‡º
 				try {
 					new StartView(user).init();
 				} catch (Exception e1) {
@@ -91,9 +91,9 @@ public class GameView {
 		rankBut.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				List<GameModel> rankList = HandleDataList.getUserList(); // »ñÈ¡ËùÓĞÓÃ»§ÅÅĞòºóµÄÁĞ±í
+				List<GameModel> rankList = HandleDataList.getUserList(); // è·å–æ‰€æœ‰ç”¨æˆ·æ’åºåçš„åˆ—è¡¨
 				try {
-					 // ÏÔÊ¾ÅÅĞĞ°ñÊÓÍ¼
+					// æ˜¾ç¤ºæ’è¡Œæ¦œè§†å›¾
 					new RankListView(rankList, user).init();
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -108,8 +108,8 @@ public class GameView {
 		cBox.add(continueBut);
 		cBox.add(Box.createHorizontalStrut(120));
 		cBox.add(rankBut);
-		
-		// ÓÎÏ·½çÃæ
+
+		// æ¸¸æˆç•Œé¢
 		JPanel panel = new JPanel();
 		panel.add(cBox);
 		gamePanel = new HandleGame(user);
@@ -117,17 +117,17 @@ public class GameView {
 
 		jf.add(gamePanel);
 		jf.add(panel, BorderLayout.SOUTH);
-		
 
-		// ÇëÇóÓÎÏ·´°¿Ú»ñµÃ½¹µã
+
+		// è¯·æ±‚æ¸¸æˆçª—å£è·å¾—ç„¦ç‚¹
 		if (!gamePanel.isFocusable()){
 			gamePanel.setFocusable(true);
         }
         if (!gamePanel.isFocusOwner()){
         	gamePanel.requestFocusInWindow();
         }
-		
-		// Æô¶¯ÓÎÏ·
+
+		// å¯åŠ¨æ¸¸æˆ
 		timeThread=new Timer(30, gamePanel);
 		timeThread.start();
 		gamePanel.setThread(timeThread);

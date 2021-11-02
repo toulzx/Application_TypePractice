@@ -18,90 +18,90 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
- * µÇÂ½ÊÓÍ¼£º
- * »æÖÆµÇÂ½½çÃæ
+ * ç™»é™†è§†å›¾ï¼š
+ * ç»˜åˆ¶ç™»é™†ç•Œé¢
  *
  */
 public class LoginView {
 
-	JFrame jf = new JFrame("µÇÂ¼");
+    JFrame jf = new JFrame(" ç™»å½• ");
 
     final int WIDTH = 500;
     final int HEIGHT = 300;
 
-    //×é×°ÊÓÍ¼
+    // ç»„è£…è§†å›¾
     public void init() throws Exception {
-        //ÉèÖÃ´°¿ÚÏà¹ØµÄÊôĞÔ
+        // è®¾ç½®çª—å£ç›¸å…³çš„å±æ€§
         jf.setBounds((ScreenUtils.getScreenWidth() - WIDTH) / 2, (ScreenUtils.getScreenHeight() - HEIGHT) / 2, WIDTH, HEIGHT);
         jf.setResizable(false);
-        jf.setIconImage(ImageIO.read(new File("images\\logo.jpg")));//ÉèÖÃlogoÍ¼Æ¬
+        jf.setIconImage(ImageIO.read(new File("src\\images\\logo.jpg")));// è®¾ç½® logo å›¾ç‰‡
 
-        //ÉèÖÃ´°¿ÚµÄÄÚÈİ
-        BackGroundPanel bgPanel = new BackGroundPanel(ImageIO.read(new File("images\\library.jpg")));
+        // è®¾ç½®çª—å£çš„å†…å®¹
+        BackGroundPanel bgPanel = new BackGroundPanel(ImageIO.read(new File("src\\images\\library.jpg")));
         bgPanel.setBounds(0,0,WIDTH,HEIGHT);
-        //×é×°µÇÂ¼Ïà¹ØµÄÔªËØ
+        // ç»„è£…ç™»å½•ç›¸å…³çš„å…ƒç´ 
         Box vBox = Box.createVerticalBox();
 
-        //×é×°ÓÃ»§Ãû
+        // ç»„è£…ç”¨æˆ·å
         Box uBox = Box.createHorizontalBox();
-        JLabel uLabel = new JLabel("ÓÃ»§Ãû£º");
+        JLabel uLabel = new JLabel(" ç”¨æˆ·åï¼š");
         JTextField uField = new JTextField(15);
 
         uBox.add(uLabel);
         uBox.add(Box.createHorizontalStrut(20));
         uBox.add(uField);
 
-        //×é×°ÃÜÂë
+        // ç»„è£…å¯†ç 
         Box pBox = Box.createHorizontalBox();
-        JLabel pLabel = new JLabel("ÃÜ    Âë£º");
+        JLabel pLabel = new JLabel(" å¯†    ç ï¼š");
         JPasswordField pField = new JPasswordField(15);
 
         pBox.add(pLabel);
         pBox.add(Box.createHorizontalStrut(20));
         pBox.add(pField);
 
-        //×é×°°´Å¥
+        // ç»„è£…æŒ‰é’®
         Box btnBox = Box.createHorizontalBox();
-        JButton loginBtn = new JButton("µÇÂ¼");
-        JButton registBtn = new JButton("×¢²á");
+        JButton loginBtn = new JButton(" ç™»å½• ");
+        JButton registBtn = new JButton(" æ³¨å†Œ ");
 
-        loginBtn.addActionListener(new ActionListener() {  //Ê¹ÓÃÄäÃûÀà£¬×¢²áÎª¡°µÇÂ¼¡±°´Å¥µÄ¼àÊÓÆ÷
-        	@Override
-        	public void actionPerformed(ActionEvent e) {
-        		//»ñÈ¡ÓÃ»§ÊäÈëµÄÊı¾İ
-        		String username = uField.getText().trim();
-        		String password = new String(pField.getPassword());
-              
-        		Login loginUser=new Login(username, password);
-        		HandleLogin.queryVerify(loginUser);
-              
-        		if (loginUser.getLoginSuccess()){
-        			//µÇÂ¼³É¹¦,Ìø×ªµ½Ö÷Ò³Ãæ
-        			try {
-        				new StartView(loginUser.getNowUser()).init();
-        				jf.dispose();
-        			} 
-        			catch (Exception ex) {
-        				ex.printStackTrace();
-        			}
-        		}
-        		else{
-        			// µÇÂ¼Ê§°Ü
-        			JOptionPane.showMessageDialog(jf,"ÃÜÂë»òÓÃ»§Ãû´íÎó£¬ÇëÖØĞÂÊäÈë»ò×¢²á");
-        		}
-        	}
+        loginBtn.addActionListener(new ActionListener() {  // ä½¿ç”¨åŒ¿åç±»ï¼Œæ³¨å†Œä¸º â€œç™»å½•â€ æŒ‰é’®çš„ç›‘è§†å™¨
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // è·å–ç”¨æˆ·è¾“å…¥çš„æ•°æ®
+                String username = uField.getText().trim();
+                String password = new String(pField.getPassword());
+
+                Login loginUser=new Login(username, password);
+                HandleLogin.queryVerify(loginUser);
+
+                if (loginUser.getLoginSuccess()){
+                    // ç™»å½•æˆåŠŸï¼Œè·³è½¬åˆ°ä¸»é¡µé¢
+                    try {
+                        new StartView(loginUser.getNowUser()).init();
+                        jf.dispose();
+                    }
+                    catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                else{
+                    // ç™»å½•å¤±è´¥
+                    JOptionPane.showMessageDialog(jf," å¯†ç æˆ–ç”¨æˆ·åé”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥æˆ–æ³¨å†Œ ");
+                }
+            }
         });
-        
+
         registBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //Ìø×ªµ½×¢²áÒ³Ãæ
+                // è·³è½¬åˆ°æ³¨å†Œé¡µé¢
                 try {
                     new RegisterView().init();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-                //µ±Ç°½çÃæÏûÊ§
+                // å½“å‰ç•Œé¢æ¶ˆå¤±
                 jf.dispose();
             }
         });

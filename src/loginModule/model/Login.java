@@ -3,55 +3,53 @@ package loginModule.model;
 import gameModule.model.GameModel;
 
 /**
- * µÇÂ½Ä£ĞÍ
- * @author ¶ÎÖ¾³¬
- *
+ * ç™»é™†æ¨¡å‹
  */
 public class Login {
 
-	// ÉèÖÃÊôĞÔÄ¬ÈÏÖµ
-	private String username=null, passwrod=null;// ÓÃ»§ÃûºÍÃÜÂë
-	private boolean loginSuccess=false; // µÇÂ½ÊÇ·ñ³É¹¦
+	// è®¾ç½®å±æ€§é»˜è®¤å€¼
+	private String username=null, passwrod=null;// ç”¨æˆ·åå’Œå¯†ç 
+	private boolean loginSuccess=false; // ç™»é™†æ˜¯å¦æˆåŠŸ
 	private GameModel nowUser=null;
-	
+
 	/**
-	 * Í¨¹ı¹¹Ôì·½·¨Ìá¹©µÄ²ÎÊıÉèÖÃµ±Ç°ÒªµÇÂ½µÄÓÃ»§ÃûºÍÃÜÂë
-	 * @param username ÓÃ»§Ãû
-	 * @param passwrod ÃÜÂë
+	 * é€šè¿‡æ„é€ æ–¹æ³•æä¾›çš„å‚æ•°è®¾ç½®å½“å‰è¦ç™»é™†çš„ç”¨æˆ·åå’Œå¯†ç 
+	 * @param username ç”¨æˆ·å
+	 * @param passwrod å¯†ç 
 	 */
 	public Login(String username, String passwrod){
 		this.username=username;
 		this.passwrod=passwrod;
 	}
-	
-	// ÉèÖÃÓò¸ü¸ÄÆ÷ºÍÓò·ÃÎÊÆ÷
+
+	// è®¾ç½®åŸŸæ›´æ”¹å™¨å’ŒåŸŸè®¿é—®å™¨
 	public void setUsername(String s) {
 		username=s;
 	}
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public void setPasswrod(String s) {
 		passwrod=s;
 	}
 	public String getPasswrod() {
 		return passwrod;
 	}
-	
+
 	public void setLoginSuccess(boolean b) {
 		loginSuccess=b;
 	}
 	public boolean getLoginSuccess() {
 		return loginSuccess;
 	}
-	
+
 	public void setNowUser(GameModel g) {
 		nowUser=g;
 	}
 	public GameModel getNowUser() {
 		return nowUser;
 	}
-	
-	
+
+
 }

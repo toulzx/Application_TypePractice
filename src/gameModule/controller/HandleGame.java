@@ -16,16 +16,13 @@ import javax.swing.Timer;
 import gameModule.model.GameModel;
 
 /**
- * ´¦ÀíÓÎÏ·£º
- * ¼´¸ù¾İÓÃ»§Êı¾İÒÔ¼°Ñ¡ÔñµÄ¹Ø¿¨Éú³É¶ÔÓ¦ÓÎÏ·Êı¾İ
- * @author ¶ÎÖ¾³¬
+ * å¤„ç†æ¸¸æˆï¼š
+ * å³æ ¹æ®ç”¨æˆ·æ•°æ®ä»¥åŠé€‰æ‹©çš„å…³å¡ç”Ÿæˆå¯¹åº”æ¸¸æˆæ•°æ®
+ * @author æ®µå¿—è¶…
  *
  */
 public class HandleGame extends JPanel implements ActionListener ,KeyListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private GameModel user=null;
@@ -69,41 +66,41 @@ public class HandleGame extends JPanel implements ActionListener ,KeyListener {
 	@Override
 	public void paint(Graphics g){
         super.paint(g);
-        ImageIcon icon1 = new ImageIcon("images\\2.jpg");
-        ImageIcon icon2 = new ImageIcon("images\\3.jpg");
-        Font f1 = new Font("¿¬Ìå",Font.BOLD,30);
-        Font f2 = new Font("¿¬Ìå",Font.BOLD,28);
+        ImageIcon icon1 = new ImageIcon("src\\images\\2.jpg");
+        ImageIcon icon2 = new ImageIcon("src\\images\\3.jpg");
+		Font f1 = new Font(" æ¥·ä½“ ",Font.BOLD,30);
+		Font f2 = new Font(" æ¥·ä½“ ",Font.BOLD,28);
         g.setColor(Color.RED);
         g.setFont(f2);
         if(time <= 0){
         	thread.stop();
-        	HandleDataList.saveCurrentUserData(user); // ½áÊøÓÎÏ·Ç°ÏÈ±£´æÓÃ»§Êı¾İ
+        	HandleDataList.saveCurrentUserData(user);
         	g.drawImage(icon2.getImage(), 0, 0, getSize().width, getSize().height, this);
-        	if(accuracyCount > 0.6) {
-        		// Èç¹û×¼È·ÂÊ´óÓÚ 60%£¬¸Ã¹ØÍ¨¹ı
-        		int passNum=user.getPassNum();
-        		if(charNumb/5 > passNum && passNum<4) {
-					passNum++; // Èç¹ûµ±Ç°¹Ø¿¨Î´Í¨¹Ø£¬Í¨¹ØÊı¼ÓÒ»
+			if(accuracyCount > 0.6) {
+				// å¦‚æœå‡†ç¡®ç‡å¤§äº 60%ï¼Œè¯¥å…³é€šè¿‡
+				int passNum=user.getPassNum();
+				if(charNumb/5 > passNum && passNum<4) {
+					passNum++; // å¦‚æœå½“å‰å…³å¡æœªé€šå…³ï¼Œé€šå…³æ•°åŠ ä¸€
 				}
-        		user.setPassNum(passNum);
-            	JOptionPane.showConfirmDialog(this, user.getNickname()+"£¬¹§Ï²ÄãË³ÀûÍ¨¹ØÀ²£¡",
-            			"ÓÎÏ·½áÊø",JOptionPane.YES_OPTION);
-        	}
-        	else {
-        		JOptionPane.showConfirmDialog(this, "ÊÖËÙ²»ĞĞ£¬ÔÙ½ÓÔÙÀ÷Å¶£¡",
-            			"ÓÎÏ·½áÊø",JOptionPane.YES_OPTION);
-        	}
+				user.setPassNum(passNum);
+				JOptionPane.showConfirmDialog(this, user.getNickname()+"ï¼Œæ­å–œä½ é¡ºåˆ©é€šå…³å•¦ï¼",
+						" æ¸¸æˆç»“æŸ ",JOptionPane.YES_OPTION);
+			}
+			else {
+				JOptionPane.showConfirmDialog(this, " æ‰‹é€Ÿä¸è¡Œï¼Œå†æ¥å†å‰å“¦ï¼",
+						" æ¸¸æˆç»“æŸ ",JOptionPane.YES_OPTION);
+			}
         }
-        
-        g.drawImage(icon1.getImage(), 0, 0, getSize().width, getSize().height, this);
-        g.drawString("ÕıÈ·Êı:" + rightCount, 10, 30);
-        g.drawString("ÕıÈ·ÂÊ£º" + (int)(accuracyCount*100) + "%", 200, 30);
-        g.drawString("Ê±¼ä£º" + time, 510, 30);
-        g.setFont(f1);
-        g.setColor(Color.BLUE);
-        for(int i = 0; i < charNumb; i++){
-            g.drawString("" + (char)ch[i], x[i], y[i]);
-        }
+
+		g.drawImage(icon1.getImage(), 0, 0, getSize().width, getSize().height, this);
+		g.drawString(" æ­£ç¡®æ•°:" + rightCount, 10, 30);
+		g.drawString(" æ­£ç¡®ç‡ï¼š" + (int)(accuracyCount*100) + "%", 200, 30);
+		g.drawString(" æ—¶é—´ï¼š" + time, 510, 30);
+		g.setFont(f1);
+		g.setColor(Color.BLUE);
+		for(int i = 0; i < charNumb; i++){
+			g.drawString("" + (char)ch[i], x[i], y[i]);
+		}
     }
 	
 
@@ -124,9 +121,10 @@ public class HandleGame extends JPanel implements ActionListener ,KeyListener {
 			timecount++;
 			y[i]+=speed;
 			if(y[i]>500) {
-				// Èç¹û×ÖÄ¸ÏÂÂäµ½´°¿ÚÍâ»¹Î´ÕıÈ·¼üÈë£¬¼ÆÊı¼ÓÒ»
+				// å¦‚æœå­—æ¯ä¸‹è½åˆ°çª—å£å¤–è¿˜æœªæ­£ç¡®é”®å…¥ï¼Œè®¡æ•°åŠ ä¸€
 				y[i]=0;
 				typeCount++;
+//				new HandleSound("Explode.mp3", false).start();
 			}
 			if(count>5000) {
 				speed+=1;
@@ -137,7 +135,7 @@ public class HandleGame extends JPanel implements ActionListener ,KeyListener {
 				timecount=0;
 			}
 		}
-		// ¸üĞÂÊı¾İ
+		// æ›´æ–°æ•°æ®
 		user.setTypeCount(typeCount);
 		accuracyCount=(double)rightCount/typeCount;
 		repaint();
@@ -145,19 +143,23 @@ public class HandleGame extends JPanel implements ActionListener ,KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		typeCount++; // ÓÃ»§ÇÃ»÷¼üÅÌ£¬Ôò¼ÆÊı¼ÓÒ»
+		typeCount++; // ç”¨æˆ·æ•²å‡»é”®ç›˜ï¼Œåˆ™è®¡æ•°åŠ ä¸€
 		
 		int yy=-1;
 		int index=-1;
 		for(int i=0; i<charNumb; i++) {
-			if(e.getKeyChar() == ch[i]) { 
-				// ¼üÈëÕıÈ·£¬»ñÈ¡ÕıÈ·¼üÈëµÄ×ÖÄ¸Î»ÖÃ£¬¼ÆÊı¼ÓÒ»
+			if(e.getKeyChar() == ch[i]) {
+				// é”®å…¥æ­£ç¡®ï¼Œè·å–æ­£ç¡®é”®å…¥çš„å­—æ¯ä½ç½®ï¼Œè®¡æ•°åŠ ä¸€
 				if(yy < y[i]) {
 					rightCount++;
+					new HandleSound("Laser Blast.mp3", false).start();
 					yy=y[i];
 					index=i;
 					break;
 				}
+			}
+			if (i == charNumb-1) {
+				new HandleSound("Explode.mp3", false).start();
 			}
 		}
 		if(index > -1) {
@@ -165,7 +167,7 @@ public class HandleGame extends JPanel implements ActionListener ,KeyListener {
 			x[index] = (int)(Math.random() * 500);
 			ch[index] = (char)(Math.random() * 26 + 97);
 		}
-		// ¸üĞÂÊı¾İ
+		// æ›´æ–°æ•°æ®
 		user.setTypeCount(typeCount);
 		user.setRightCount(rightCount);
 	}
@@ -173,13 +175,13 @@ public class HandleGame extends JPanel implements ActionListener ,KeyListener {
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
