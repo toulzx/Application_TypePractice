@@ -35,21 +35,21 @@ public class HandleLogin {
 			while((json=userRead.readLine()) != null) { // 不断读取用户数据
 				nowUser=mapper.readValue(json, GameModel.class); // 读取到的用户作为当前用户
 				if(nowUser.getUsername().equals(login.getUsername())) {
-					if(nowUser.getPasswrod().equals(login.getPasswrod())) {
+					if(nowUser.getPasswrod().equals(login.getPassword())) {
 						// 找到用户名，且密码正确，登陆成功
 						login.setLoginSuccess(true);
-						login.setNowUser(nowUser);
+						login.setCurrentUser(nowUser);
 						break;
 					}
 					else {
 						login.setLoginSuccess(false); // 密码错误，登陆失败
-						login.setNowUser(null);
+						login.setCurrentUser(null);
 					}
 				}
 			}
 			userRead.close(); // 关闭上层流
 			if(login.getLoginSuccess() != true) { // 不存在该用户，登陆失败
-				login.setNowUser(null);
+				login.setCurrentUser(null);
 			}
 		}
 		catch(IOException e) {

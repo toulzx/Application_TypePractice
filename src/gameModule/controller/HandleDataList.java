@@ -184,16 +184,13 @@ public class HandleDataList {
 	 * @author tou
 	 */
 	private static boolean fileWrite() {
-		// ����ļ����ݣ���д
 		clearInfoForFile("UserInfo.json");
-		// ����Jackson�ĺ��Ķ���ObjectMapper
 		ObjectMapper mapper=new ObjectMapper();
 		PrintStream stream = null;
 		try {
 			for (GameModel gameModel : mUserList) {
-				// ������ת��Ϊjson�ַ���
 				String json = mapper.writeValueAsString(gameModel);
-				FileWriter userFile = new FileWriter("UserInfo.json", true); // �Ը�д�ķ�ʽд���ļ�
+				FileWriter userFile = new FileWriter("UserInfo.json", true);
 				BufferedWriter writeLine = new BufferedWriter(userFile);
 				writeLine.write(json);
 				writeLine.newLine();

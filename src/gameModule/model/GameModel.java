@@ -22,7 +22,7 @@ public class GameModel extends Register{
 	private long typeCount=0;
 	@JsonIgnore// 本次游戏打字正确数
 	private long rightCount=0;
-	// 打字正确率增量
+	// 最新一次打字正确率
 	private double newAccuracy =0;
 
 

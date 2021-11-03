@@ -19,7 +19,7 @@ import gameModule.controller.HandleDataList;
 import gameModule.model.GameModel;
 import loginModule.utils.ScreenUtils;
 
-public class GameView {
+public class CharView {
 
 	JFrame jf=new JFrame(" 字符模式 ");
 	
@@ -30,7 +30,7 @@ public class GameView {
 	final int WIDTH = 740;
 	final int HEIGHT = 550;
 	
-	public GameView(GameModel user) {
+	public CharView(GameModel user) {
 		this.user=user;
 	}
 	

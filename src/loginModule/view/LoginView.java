@@ -78,7 +78,7 @@ public class LoginView {
                 if (loginUser.getLoginSuccess()){
                     // 登录成功，跳转到主页面
                     try {
-                        new StartView(loginUser.getNowUser()).init();
+                        new StartView(loginUser.getCurrentUser()).init();
                         jf.dispose();
                     }
                     catch (Exception ex) {

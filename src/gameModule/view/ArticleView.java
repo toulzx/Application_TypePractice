@@ -16,7 +16,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Random;
 
-class Windowm extends JFrame
+class ArticleView extends JFrame
 {
     static String[] txts = {
             "HadINotSeenTheSun.txt",
@@ -28,9 +28,7 @@ class Windowm extends JFrame
     };
 
     String path1;// 第一个文件目录
-    String path2;// 第二个文件目录
     String File1;// 第一个文件
-    String File2;// 第二个文件
     int point;// 保存当前活动窗口
     GameModel user;
 
@@ -59,7 +57,7 @@ class Windowm extends JFrame
     JSplitPane jSplitPane2 =new JSplitPane();// 设定为拆分布局
     JSplitPane jSplitPane3 =new JSplitPane();// 设定为拆分布局
 
-    public Windowm(GameModel user)
+    public ArticleView(GameModel user)
     {
         this.user = user;
 

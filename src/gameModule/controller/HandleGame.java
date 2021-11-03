@@ -18,7 +18,6 @@ import gameModule.model.GameModel;
 /**
  * 处理游戏：
  * 即根据用户数据以及选择的关卡生成对应游戏数据
- * @author 段志超
  *
  */
 public class HandleGame extends JPanel implements ActionListener ,KeyListener {

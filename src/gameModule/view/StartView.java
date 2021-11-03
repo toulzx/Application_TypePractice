@@ -82,7 +82,7 @@ public class StartView {
 							user.setDifficulty(15);
 							break;
 						case " 自由模式 " :
-							String difficultyCustom=JOptionPane.showInputDialog(null," 请输入你想要的难度 (如：5,15,20)",
+							String difficultyCustom=JOptionPane.showInputDialog(null," 请输入你想要的难度 (自由文章模式请避开值：5,15,20)",
 									" 难度自定义 ",JOptionPane.PLAIN_MESSAGE);
 							if(difficultyCustom != null) {
 								user.setDifficulty(Integer.parseInt(difficultyCustom));
@@ -92,7 +92,7 @@ public class StartView {
 					if (user.getModel() == 0) {
 						// 跳转到字符界面
 						try {
-							new GameView(user).init();
+							new CharView(user).init();
 							jf.dispose();
 						}
 						catch(Exception ex) {
@@ -102,16 +102,16 @@ public class StartView {
 						// 跳转文本比较界面
 						try{
 							//初始化界面
-							Windowm windowm = new Windowm(user);
+							ArticleView articleView = new ArticleView(user);
 							//属性设置
 							SimpleAttributeSet attrset = new SimpleAttributeSet();
 							//字体大小
 							StyleConstants.setFontSize(attrset,16);
 							//获取JTextPane对象
-							Document docs1=windowm.text1.getDocument();
+							Document docs1= articleView.text1.getDocument();
 							//设置初次显示文本
 							docs1.insertString(docs1.getLength(), "", attrset);
-							Document docs2=windowm.text2.getDocument();
+							Document docs2= articleView.text2.getDocument();
 							docs2.insertString(docs2.getLength(), "手动输入输入或者选择文间打开\n点击核对试试\n红色表示错误字符\n蓝色表示多余或缺失字符", attrset);
 						} catch (BadLocationException e) {
 							e.printStackTrace();
@@ -120,6 +120,8 @@ public class StartView {
 				}
 			});
 		}
+		// 修改逻辑，始终允许使用自由模式
+		choiceBut[3].setEnabled(true);
 		
 		cBox1.add(choiceBut[0]);
 		cBox1.add(Box.createHorizontalStrut(20));
@@ -131,7 +133,7 @@ public class StartView {
 		
 		// 模式
 		Box sBox = Box.createHorizontalBox();
-		JButton startBut = new JButton("点此选择游戏模式");
+		JButton startBut = new JButton("点此选择游戏模式（默认字符模式）");
 		startBut.setBackground(Color.white);
 
 		startBut.addActionListener(new ActionListener() { // 为“开始游戏”按钮注册监视器
