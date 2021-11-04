@@ -70,6 +70,7 @@ public class StartView {
 			choiceBut[i].addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent actionEvent) {
+					String difficultyCustom = "";
 					// 设置不同关卡难度
 					switch(actionEvent.getActionCommand()) {
 						case" 第一关 " :
@@ -82,14 +83,14 @@ public class StartView {
 							user.setDifficulty(15);
 							break;
 						case " 自由模式 " :
-							String difficultyCustom=JOptionPane.showInputDialog(null," 请输入你想要的难度 (自由文章模式请避开值：5,15,20)",
+							difficultyCustom=JOptionPane.showInputDialog(null," 请输入你想要的难度 (自由文章模式请避开值：5,15,20)",
 									" 难度自定义 ",JOptionPane.PLAIN_MESSAGE);
 							if(difficultyCustom != null) {
 								user.setDifficulty(Integer.parseInt(difficultyCustom));
 							}
 							break;
 					}
-					if (user.getModel() == 0) {
+					if (user.getModel() == 0 && difficultyCustom != null) {
 						// 跳转到字符界面
 						try {
 							new CharView(user).init();
@@ -98,7 +99,7 @@ public class StartView {
 						catch(Exception ex) {
 							ex.printStackTrace();
 						}
-					} else {
+					} else if (difficultyCustom != null){
 						// 跳转文本比较界面
 						try{
 							//初始化界面
